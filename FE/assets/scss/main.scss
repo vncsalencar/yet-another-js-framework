@@ -5,5 +5,13 @@
 }
 
 * {
-  @apply bg-black font-primary text-white
+  @apply bg-black font-primary
+}
+
+h1,h2,h3{
+  @apply text-white
+}
+
+p,b,small{
+  @apply text-gray-400
 }

@@ -1,5 +1,9 @@
 <template>
-  <Navbar></Navbar>
+  <Header></Header>
+  <Body>
+    <FeatureSection></FeatureSection>
+  </Body>
+  
 </template>
 
 <style lang="scss">
