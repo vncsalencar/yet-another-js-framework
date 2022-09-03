@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="text-2xl mb-4 text-center">🔥Upcoming Frameworks🔥</h2>
+    <h2 class="text-2xl mb-4 text-center">🔥Upcoming Frameworks</h2>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <FeatureCard
         v-for="framework in featureFrameworks"

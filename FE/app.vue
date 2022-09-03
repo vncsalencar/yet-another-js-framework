@@ -1,10 +1,8 @@
 <template>
-  <Header></Header>
-  <Body>
-    <FeatureSection></FeatureSection>
-  </Body>
-  
+    <Container>
+      <Header></Header>
+      <FeatureSection></FeatureSection>
+    </Container>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
