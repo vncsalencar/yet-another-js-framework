@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "SpaceMono";
+  src: local("SpaceMono"),
+    url(../fonts/SpaceMono-Regular.ttf) format("truetype");
+}
+
+* {
+  @apply bg-black font-primary text-white
+}
