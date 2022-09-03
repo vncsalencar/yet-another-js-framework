@@ -5,7 +5,7 @@
     target="_blank"
   >
     <h3 class="text-xl">{{ props.featuredFramework.title }}</h3>
-    <p>{{ props.featuredFramework.description }}</p>
+    <p class="line-clamp-2">{{ props.featuredFramework.description }}</p>
     <div class="flex flex-row items-center gap-2">
       <p>{{ props.featuredFramework.version }}</p>
       <b class="text-3xl">.</b>

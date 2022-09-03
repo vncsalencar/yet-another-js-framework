@@ -14,5 +14,7 @@ module.exports = {
       'primary': 'SpaceMono',
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 };
