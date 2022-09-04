@@ -1,6 +1,6 @@
 <template>
   <Section>
-    <h2 class="text-2xl mb-8 text-center uppercase">🔥Latest Frameworks</h2>
+    <h2 class="text-2xl mb-8 text-center uppercase">🔥 Trending</h2>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <FeatureCard
         v-for="framework in featureFrameworks"

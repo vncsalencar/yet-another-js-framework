@@ -8,7 +8,7 @@
     <p class="line-clamp-2">{{ props.featuredFramework.description }}</p>
     <div class="flex flex-row items-center gap-2">
       <p>{{ props.featuredFramework.version }}</p>
-      <span class="inline-block h-2 w-2 bg-gray-400 rounded-md"></span>
+      <span class="inline-block h-2 w-2 bg-white rounded-md"></span>
       <p>Published {{ props.featuredFramework.latestRelease }}</p>
     </div>
     <p>

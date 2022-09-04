@@ -13,6 +13,15 @@ module.exports = {
     fontFamily: {
       'primary': 'SpaceMono',
     },
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'white': '#f8f8f2',
+        'gray': '#44475a',
+        'bg': '#282a36',
+        'accent': '#f0db4f'
+        
+      },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
