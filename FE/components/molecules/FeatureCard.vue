@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    class="block w-fit mx-auto border-solid p-2 border-2 border-white hover:border-[#f0db4f]"
+    class="block w-full mx-auto border-solid p-2 border-2 border-white hover:border-[#f0db4f]"
     to="#"
     target="_blank"
   >
