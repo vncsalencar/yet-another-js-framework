@@ -8,6 +8,12 @@ declare global {
         weeklyDownloads: number;
         githubStars: number;
     }
+
+    interface Content {
+        title: string,
+        type: string,
+        date: string,
+    }
 }
 
 export { }
