@@ -1,6 +1,6 @@
 <template>
   <Section>
-    <h2 class="text-2xl mb-4 text-center uppercase">Content that we liked</h2>
+    <h2 class="text-2xl mb-4 text-center uppercase">📚 Content that we liked</h2>
     <div class="">
       <ContentCard></ContentCard>
       <ContentCard></ContentCard>
