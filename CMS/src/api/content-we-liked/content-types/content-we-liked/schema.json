@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "content_type": {
+    "contentType": {
       "type": "enumeration",
       "enum": [
         "Article",
@@ -32,10 +32,10 @@
     "tags": {
       "type": "text"
     },
-    "thumbnail_url": {
+    "thumbnailUrl": {
       "type": "text"
     },
-    "thumbnail_alt": {
+    "thumbnailAlt": {
       "type": "text"
     },
     "link": {
