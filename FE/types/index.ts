@@ -1,4 +1,5 @@
-import { Thumbnail } from './../.nuxt/components.d';
+import {ContentType} from "./enums"
+
 declare global {
     interface FeaturedFramework {
         title: string;
@@ -12,10 +13,10 @@ declare global {
 
     interface Content {
         title: string,
-        type: string,
+        type: ContentType,
         date: string,
         author: string,
-        thumbnail: {
+        thumbnail?: {
             url: string,
             alt: string
         },
@@ -23,11 +24,7 @@ declare global {
         link: string,
     }
 
-    enum ContentType {
-        Article = "Article",
-        Video = "Video",
-        Project = "Project"
-    }
+  
 }
 
 export { }
