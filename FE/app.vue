@@ -4,6 +4,7 @@
     <FeatureSection></FeatureSection>
     <ContentSection></ContentSection>
     <HelpfulMaterialSection></HelpfulMaterialSection>
+    <AboutSection></AboutSection>
   </Container>
 </template>
 

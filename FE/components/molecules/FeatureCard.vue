@@ -13,11 +13,11 @@
     </div>
     <p>
       <small>
-        Weekly downloads: {{ featuredFramework.weeklyDownloads }}
+        Weekly downloads: {{ formatNumber(featuredFramework.weeklyDownloads)}}
       </small>
     </p>
     <p>
-      <small> Github ⭐: {{ featuredFramework.githubStars }} </small>
+      <small> Github ⭐: {{ formatNumber(featuredFramework.githubStars) }} </small>
     </p>
   </NuxtLink>
 </template>
