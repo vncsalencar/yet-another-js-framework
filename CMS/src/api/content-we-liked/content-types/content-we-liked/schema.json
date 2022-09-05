@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "content_we_likeds",
+  "collectionName": "content_we_liked",
   "info": {
     "singularName": "content-we-liked",
-    "pluralName": "content-we-likeds",
+    "pluralName": "contents-we-liked",
     "displayName": "ContentWeLiked"
   },
   "options": {
@@ -13,11 +13,7 @@
   "attributes": {
     "type": {
       "type": "enumeration",
-      "enum": [
-        "Article",
-        "Video",
-        "Project"
-      ]
+      "enum": ["Article", "Video", "Project"]
     },
     "title": {
       "type": "string"
