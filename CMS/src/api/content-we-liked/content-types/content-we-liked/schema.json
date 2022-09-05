@@ -4,16 +4,21 @@
   "info": {
     "singularName": "content-we-liked",
     "pluralName": "contents-we-liked",
-    "displayName": "ContentWeLiked"
+    "displayName": "ContentWeLiked",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "type": {
+    "content_type": {
       "type": "enumeration",
-      "enum": ["Article", "Video", "Project"]
+      "enum": [
+        "Article",
+        "Video",
+        "Project"
+      ]
     },
     "title": {
       "type": "string"
