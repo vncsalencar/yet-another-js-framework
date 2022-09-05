@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_we_liked",
+  "info": {
+    "singularName": "content-we-liked",
+    "pluralName": "contents-we-liked",
+    "displayName": "ContentWeLiked"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": ["Article", "Video", "Project"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "tags": {
+      "type": "text"
+    },
+    "thumbnail_url": {
+      "type": "text"
+    },
+    "thumbnail_alt": {
+      "type": "text"
+    }
+  }
+}
