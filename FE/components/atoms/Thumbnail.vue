@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 defineProps<{
-  url: string;
-  alt: string;
+  url?: string;
+  alt?: string;
   link: string;
 }>();
 </script>

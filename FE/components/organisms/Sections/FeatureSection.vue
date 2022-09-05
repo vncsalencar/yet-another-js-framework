@@ -1,11 +1,11 @@
 <template>
   <Section title="🔥 Trending">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <FeatureCard
         v-for="framework in featureFrameworks"
         :featured-framework="framework"
       ></FeatureCard>
-    </div>
+    </ul>
   </Section>
 </template>
 

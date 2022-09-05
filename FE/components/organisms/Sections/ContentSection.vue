@@ -1,11 +1,11 @@
 <template>
   <Section title="📚 Content we liked">
-    <div class="">
+    <ul>
       <ContentCard
         v-for="content in contentList"
         :content="content"
       ></ContentCard>
-    </div>
+    </ul>
   </Section>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-  <article
+  <li
     iv
-    class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white"
+    class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white first:border-t-2"
   >
     <div>
       <small class="text-accent">{{ contentType }}</small>
@@ -23,7 +23,7 @@
     <div class="hidden md:block">
       <Thumbnail v-bind="thumbnail" :link="content.link"></Thumbnail>
     </div>
-  </article>
+  </li>
 </template>
 
 <script setup lang="ts">

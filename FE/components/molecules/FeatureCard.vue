@@ -1,4 +1,5 @@
 <template>
+  <li>
   <NuxtLink
     class="block w-full mx-auto border-solid p-2 border-2 border-white hover:border-[#f0db4f]"
     to="#"
@@ -20,6 +21,7 @@
       <small> Github ⭐: {{ formatNumber(featuredFramework.githubStars) }} </small>
     </p>
   </NuxtLink>
+</li>
 </template>
 
 <script setup lang="ts">

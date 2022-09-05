@@ -1,6 +1,5 @@
 <template>
     <Section title="🎓 Helpful Material">
-        <div></div>
     </Section>
 </template>
 
