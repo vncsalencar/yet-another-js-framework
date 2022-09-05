@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const featureFrameworks: FeaturedFramework[]: FeaturedFramework[] = [
+const featureFrameworks: FeaturedFramework[] = [
   {
     title: "Vue",
     description:
