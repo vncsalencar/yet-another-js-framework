@@ -3,6 +3,7 @@
     <Header></Header>
     <FeatureSection></FeatureSection>
     <ContentSection></ContentSection>
+    <HelpfulMaterialSection></HelpfulMaterialSection>
   </Container>
 </template>
 

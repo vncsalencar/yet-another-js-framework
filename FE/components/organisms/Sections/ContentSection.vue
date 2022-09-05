@@ -1,10 +1,10 @@
 <template>
-  <Section>
-    <h2 class="text-2xl mb-4 text-center uppercase">📚 Content that we liked</h2>
+  <Section title="📚 Content we liked">
     <div class="">
-      <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
-      <ContentCard></ContentCard>
+      <ContentCard
+        v-for="content in contentList"
+        :content="content"
+      ></ContentCard>
     </div>
   </Section>
 </template>
@@ -12,9 +12,16 @@
 <script setup lang="ts">
 const contentList: Content[] = [
   {
-    title: "TITLE",
-    type: "ARTICLE",
+    type: "Article",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
     date: "09/11/1996",
+    author: "Tulio",
+    thumbnail: {
+      url: "/assets/images/thumbnail1.jpg",
+      alt: "thumbnail", 
+    },
+    tags: ["Vue", "Nuxt"],
+    link: "",
   },
 ];
 </script>

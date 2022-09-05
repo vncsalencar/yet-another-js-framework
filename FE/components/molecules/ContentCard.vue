@@ -1,22 +1,33 @@
 <template>
-  <div class="flex justify-between w-100 py-4 border-b-2 border-white">
+  <article
+    iv
+    class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white"
+  >
     <div>
-      <small>Article</small>
-      <h3 class="text-xl mb-2 hover:text-accent">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </h3>
-      <b class="mb-2">Author: Tulio</b>
-      <p class="mb-2"><small>09/11/2022</small></p>
+      <small class="text-accent">{{ content.type }}</small>
+      <p>
+        <b class="mb-2">{{ content.author }}</b>
+      </p>
+      <a :href="content.link" target="_blank">
+        <h3 class="text-xl mb-1 cursor-pointer hover:text-accent">
+          {{ content.title }}
+        </h3>
+      </a>
+      <p class="mb-4">
+        <small>{{ content.date }}</small>
+      </p>
       <div class="flex gap-4 mb-2">
-        <Chip></Chip>
-        <Chip></Chip>
-        <Chip></Chip>
+        <Chip v-for="tag in content.tags" :title="tag"></Chip>
       </div>
     </div>
     <div class="hidden md:block">
-      <Thumbnail></Thumbnail>
+      <Thumbnail v-bind="content.thumbnail" :link="content.link"></Thumbnail>
     </div>
-  </div>
+  </article>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  content: Content;
+}>();
+</script>
