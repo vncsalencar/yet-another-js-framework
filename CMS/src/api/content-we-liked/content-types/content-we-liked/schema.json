@@ -37,6 +37,9 @@
     },
     "thumbnail_alt": {
       "type": "text"
+    },
+    "link": {
+      "type": "text"
     }
   }
 }
