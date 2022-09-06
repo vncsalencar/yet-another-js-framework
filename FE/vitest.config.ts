@@ -14,7 +14,10 @@ export default defineConfig({
                 '.nuxt/**',
                 '.output/**',
                 '*.config.js',
-                '*.config.ts'
+                '*.config.ts',
+                "*.d.ts",
+                "app.vue",
+                "components/**" //REMOVE THIS AS SOON AS THE NUXT 3 AUTO IMPORT FOR TESTING ISSUE IS RESOLVED 
             ],
         }
     },
