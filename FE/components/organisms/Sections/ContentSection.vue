@@ -6,6 +6,7 @@
         :content="content"
       ></ContentCard>
     </ul>
+    <Pagination :pages="5"></Pagination>
   </Section>
 </template>
 
