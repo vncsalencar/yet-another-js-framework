@@ -29,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import PageBtnVue from '~~/components/atoms/PageBtn.vue';
+
 const props = defineProps<{ pages: number }>();
 const activePage = ref(1);
 
