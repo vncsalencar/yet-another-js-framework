@@ -3,7 +3,7 @@
     <img
     :src="url"
     :alt="alt"
-    class="h-[150px] w-[250px] object-cover"
+    class="h-[150px] w-[250px] min-h-[150px] min-w-[250px] object-cover"
   />
   </a>
 
