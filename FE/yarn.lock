@@ -5476,7 +5476,14 @@
   dependencies:
     "@vue/devtools-api" "^6.1.4"
 
-"vue@^3.0.0", "vue@^3.0.1", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.37", "vue@^3.2.38", "vue@>=3", "vue@3.2.38":
+"vue-tweet@^2.0.2":
+  "integrity" "sha512-a1tmxnOcL8MrBJBiCzoFw8njpaoVWc0pkuaBnEBKs7kdmr5qKjHlSMhjoukPPSLENPjPnRjrJnKEcu0D8+bXNw=="
+  "resolved" "https://registry.npmjs.org/vue-tweet/-/vue-tweet-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "vue" "^3.2.36"
+
+"vue@^3.0.0", "vue@^3.0.1", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.36", "vue@^3.2.37", "vue@^3.2.38", "vue@>=3", "vue@3.2.38":
   "integrity" "sha512-hHrScEFSmDAWL0cwO4B6WO7D3sALZPbfuThDsGBebthrNlDxdJZpGR3WB87VbjpPh96mep1+KzukYEhpHDFa8Q=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.38.tgz"
   "version" "3.2.38"

@@ -3,6 +3,7 @@
     <Header></Header>
     <FeatureSection></FeatureSection>
     <ContentSection></ContentSection>
+    <TwitterSection></TwitterSection>
     <HelpfulMaterialSection></HelpfulMaterialSection>
     <AboutSection></AboutSection>
   </Container>
