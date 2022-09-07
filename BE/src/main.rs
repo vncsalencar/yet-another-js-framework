@@ -86,7 +86,7 @@ async fn main() -> std::io::Result<()> {
             .route("/ping", web::get().to(|| async { "pong" }))
             .service(web::scope("/api").service(strapi_list))
     })
-    .bind(("127.0.0.1", 3000))?
+    .bind(("0.0.0.0", 8088))?
     .run()
     .await
 }
