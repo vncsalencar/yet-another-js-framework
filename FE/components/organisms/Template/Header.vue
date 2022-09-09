@@ -4,7 +4,7 @@
       <h1 class="text-3xl md:text-4xl">
         YET ANOTHER <span class="text-[#f0db4f]">JS</span> FRAMEWORK...
       </h1>
-      <h3>Making sense of the Frontend world</h3>
+      <p>Making sense of the Frontend world</p>
     </div>
     <a
       href="https://github.com/TulioAlcantara/yet-another-js-framework"

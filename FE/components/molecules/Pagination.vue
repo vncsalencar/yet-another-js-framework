@@ -1,29 +1,35 @@
 <template>
   <ul class="flex justify-end gap-2">
-    <button
-      aria-label="Previous page"
-      class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
-      @click="changePage(-1, true)"
-      v-show="activePage > 1"
-    >
-      &lt
-    </button>
+    <li>
+      <button
+        aria-label="Previous page"
+        class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
+        @click="changePage(-1, true)"
+        v-show="activePage > 1"
+      >
+        &lt
+      </button>
+    </li>
 
-    <PageBtn
-      v-for="i of range"
-      :page-number="i"
-      @page-change="changePage(i)"
-      :active="i == activePage"
-    ></PageBtn>
+    <li>
+      <PageBtn
+        v-for="i of range"
+        :page-number="i"
+        @page-change="changePage(i)"
+        :active="i == activePage"
+      ></PageBtn>
+    </li>
 
-    <button
-      aria-label="Next page"
-      class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
-      @click="changePage(1, true)"
-      v-show="activePage < totalPages"
-    >
-      &gt
-    </button>
+    <li>
+      <button
+        aria-label="Next page"
+        class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
+        @click="changePage(1, true)"
+        v-show="activePage < totalPages"
+      >
+        &gt
+      </button>
+    </li>
   </ul>
 </template>
 
@@ -40,7 +46,7 @@ const activePage = ref(props.activePage);
 
 const range = computed(() => {
   const range = [];
-  
+
   for (
     let i = firstPage.value;
     i <= Math.min(firstPage.value + props.maxPages - 1, props.totalPages);

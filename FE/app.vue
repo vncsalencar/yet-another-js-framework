@@ -9,4 +9,11 @@
   </Container>
 </template>
 
-<style lang="scss"></style>
+<script setup lang="ts">
+useHead({
+  title: "Yet another Javascript framework",
+  htmlAttrs: {
+    lang: "en",
+  },
+});
+</script>
