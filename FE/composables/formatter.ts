@@ -5,8 +5,6 @@ export const formatCompactNumber = (n: number): string => {
 
 
 export const formatTimeAgo = (targetDate: Date, comparisonDate?: Date): string => {
-  const formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
-  let duration = (targetDate.valueOf() - comparisonDate.valueOf() || new Date().valueOf()) / 1000
   const DIVISIONS: { amount: number, name: RelativeTimeFormatUnit }[] = [
     { amount: 60, name: 'seconds' },
     { amount: 60, name: 'minutes' },
@@ -17,6 +15,19 @@ export const formatTimeAgo = (targetDate: Date, comparisonDate?: Date): string =
     { amount: Number.POSITIVE_INFINITY, name: 'years' }
   ]
 
+  type RelativeTimeFormatUnit =
+    | "years"
+    | "months"
+    | "weeks"
+    | "days"
+    | "hours"
+    | "minutes"
+    | "seconds";
+
+  const formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+  comparisonDate = comparisonDate || new Date()
+  let duration = (targetDate.valueOf() - comparisonDate.valueOf() ) / 1000
+
   for (let i = 0; i <= DIVISIONS.length; i++) {
     const division = DIVISIONS[i]
     if (Math.abs(duration) < division.amount) {
@@ -26,12 +37,3 @@ export const formatTimeAgo = (targetDate: Date, comparisonDate?: Date): string =
   }
 }
 
-
-type RelativeTimeFormatUnit =
-  | "years"
-  | "months"
-  | "weeks"
-  | "days"
-  | "hours"
-  | "minutes"
-  | "seconds";
