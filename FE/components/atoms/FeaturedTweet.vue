@@ -4,5 +4,6 @@
 
 <script setup lang="ts">
 import Tweet from "vue-tweet";
+
 const props = defineProps<{ tweetId: string }>();
 </script>

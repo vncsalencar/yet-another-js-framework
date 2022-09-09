@@ -35,7 +35,7 @@ const contentList: Content[] = [
   {
     type: ContentType.Article,
     title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-    date: "09/11/2022",
+    date: new Date("09/01/2022"),
     author: "Tulio",
     thumbnail: {
       url: "/assets/images/thumbnail1.jpg",
@@ -47,7 +47,7 @@ const contentList: Content[] = [
   {
     type: ContentType.Video,
     title: "I built a JavaScript framework",
-    date: "09/11/2022",
+    date: new Date("09/11/2021"),
     author: "Fireship",
     tags: ["Javascript", "Fireship", "Framework"],
     link: "https://www.youtube.com/watch?v=SJeBRW1QQMA",
@@ -55,7 +55,7 @@ const contentList: Content[] = [
   {
     type: ContentType.Project,
     title: "Vue",
-    date: "09/11/2022",
+    date: new Date("08/10/2022"),
     author: "yyx990803",
     tags: ["Vue", "Framework", "Javascript"],
     link: "https://github.com/vuejs/vue",

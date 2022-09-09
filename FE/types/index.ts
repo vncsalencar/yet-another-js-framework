@@ -5,7 +5,7 @@ declare global {
         title: string;
         description: string;
         version: string;
-        latestRelease: string;
+        latestRelease: Date;
         link: string;
         weeklyDownloads: number;
         githubStars: number;
@@ -14,7 +14,7 @@ declare global {
     interface Content {
         title: string,
         type: ContentType,
-        date: string,
+        date: Date,
         author: string,
         thumbnail?: {
             url: string,

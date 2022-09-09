@@ -10,15 +10,15 @@
     <div class="flex flex-row items-center gap-2">
       <p>{{ featuredFramework.version }}</p>
       <span class="inline-block h-2 w-2 bg-white rounded-md"></span>
-      <p>Published {{ featuredFramework.latestRelease }}</p>
+      <p>Published {{ formatTimeAgo(featuredFramework.latestRelease) }}</p>
     </div>
     <p>
       <small>
-        Weekly downloads: {{ formatNumber(featuredFramework.weeklyDownloads)}}
+        Weekly downloads: {{ formatCompactNumber(featuredFramework.weeklyDownloads)}}
       </small>
     </p>
     <p>
-      <small> Github ⭐: {{ formatNumber(featuredFramework.githubStars) }} </small>
+      <small> Github ⭐: {{ formatCompactNumber(featuredFramework.githubStars) }} </small>
     </p>
   </NuxtLink>
 </li>

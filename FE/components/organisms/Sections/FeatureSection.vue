@@ -16,7 +16,7 @@ const featureFrameworks: FeaturedFramework[] = [
     description:
       "The progressive JavaScript framework for building modern web UI.",
     version: "3.2.38",
-    latestRelease: "4 days ago",
+    latestRelease: new Date("08/11/2021"),
     link: "https://www.npmjs.com/package/vue",
     weeklyDownloads: 4000000,
     githubStars: 32400,
@@ -26,7 +26,7 @@ const featureFrameworks: FeaturedFramework[] = [
     description:
       "The progressive JavaScript framework for building modern web UI.",
     version: "3.2.38",
-    latestRelease: "4 days ago",
+    latestRelease: new Date("09/11/2020"),
     link: "https://www.npmjs.com/package/vue",
     weeklyDownloads: 4000000,
     githubStars: 32400,
@@ -36,7 +36,7 @@ const featureFrameworks: FeaturedFramework[] = [
     description:
       "The progressive JavaScript framework for building modern web UI.",
     version: "3.2.38",
-    latestRelease: "4 days ago",
+    latestRelease: new Date("01/01/2022"),
     link: "https://www.npmjs.com/package/vue",
     weeklyDownloads: 4000000,
     githubStars: 32400,
