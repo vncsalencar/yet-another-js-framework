@@ -1,10 +1,10 @@
 <template>
   <Container>
     <Header></Header>
+    <HelpfulMaterialSection></HelpfulMaterialSection>
     <FeatureSection></FeatureSection>
     <ContentSection></ContentSection>
     <TwitterSection></TwitterSection>
-    <HelpfulMaterialSection></HelpfulMaterialSection>
     <AboutSection></AboutSection>
   </Container>
 </template>

@@ -3,7 +3,6 @@ export const formatCompactNumber = (n: number): string => {
   return formatter.format(n);
 }
 
-
 export const formatTimeAgo = (targetDate: Date, comparisonDate?: Date): string => {
   const DIVISIONS: { amount: number, name: RelativeTimeFormatUnit }[] = [
     { amount: 60, name: 'seconds' },
