@@ -4,6 +4,7 @@
     <FeatureSection></FeatureSection>
     <ContentSection></ContentSection>
     <TwitterSection></TwitterSection>
+    <TiktokSection></TiktokSection>
     <RedditSection></RedditSection>
     <HelpfulMaterialSection></HelpfulMaterialSection>
     <AboutSection></AboutSection>

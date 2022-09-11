@@ -1,0 +1,64 @@
+<template>
+  <div class="flex justify-center" v-html="tiktokHtml"></div>
+  <!-- <blockquote
+    class="tiktok-embed"
+    cite="https://www.tiktok.com/@jomaoppa/video/7085420569780440366"
+    data-video-id="7085420569780440366"
+    style="width: 323px"
+  >
+    <section>
+      <a
+        target="_blank"
+        title="@jomaoppa"
+        href="https://www.tiktok.com/@jomaoppa?refer=embed"
+        >@jomaoppa</a
+      >
+      <a
+        title="coding"
+        target="_blank"
+        href="https://www.tiktok.com/tag/coding?refer=embed"
+        >#coding</a
+      >
+      <a
+        title="programming"
+        target="_blank"
+        href="https://www.tiktok.com/tag/programming?refer=embed"
+        >#programming</a
+      >
+      <a
+        title="tech"
+        target="_blank"
+        href="https://www.tiktok.com/tag/tech?refer=embed"
+        >#tech</a
+      >
+      <a
+        title="computerscience"
+        target="_blank"
+        href="https://www.tiktok.com/tag/computerscience?refer=embed"
+        >#computerscience</a
+      >
+      <a
+        title="math"
+        target="_blank"
+        href="https://www.tiktok.com/tag/math?refer=embed"
+        >#math</a
+      >
+      <a
+        target="_blank"
+        title="♬ original sound - Joma"
+        href="https://www.tiktok.com/music/original-sound-7085420544572787502?refer=embed"
+        >♬ original sound - Joma</a
+      >
+    </section>
+  </blockquote> -->
+</template>
+
+<script setup lang="ts">
+const props = defineProps<{ tiktokHtml: string }>();
+</script>
+
+<style scoped>
+blockquote {
+  width: 323px !important;
+}
+</style>
