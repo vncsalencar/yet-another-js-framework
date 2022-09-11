@@ -1,4 +1,4 @@
-import {ContentType} from "./enums"
+import { ContentType } from "./enums"
 
 declare global {
     interface FeaturedFramework {
@@ -24,7 +24,15 @@ declare global {
         link: string,
     }
 
-  
+    interface HelpfulMaterial {
+        title: string,
+        content: {
+            title: string,
+            link: string,
+        }[],
+    }
+
+
 }
 
 export { }

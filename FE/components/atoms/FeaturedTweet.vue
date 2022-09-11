@@ -1,9 +1,8 @@
 <template>
-    <Tweet align="center" theme="dark" :tweet-id="tweetId" />
+  <div class="flex justify-center" v-html="tweetHtml"></div>
 </template>
 
 <script setup lang="ts">
-import Tweet from "vue-tweet";
 
-const props = defineProps<{ tweetId: string }>();
+const props = defineProps<{ tweetHtml: string }>();
 </script>
