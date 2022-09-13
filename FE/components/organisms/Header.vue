@@ -1,6 +1,6 @@
 <template>
-  <header class="sticky top-0 z-10 py-4 border-b-2 border-white bg-bg">
-    <div class="flex justify-between items-center">
+  <header class="sticky top-0 z-10 py-4 border-b-2 border-white bg-primary">
+    <div class="flex justify-between items-center px-4 max-w-[1200px] mx-auto">
       <div>
         <h1 class="text-4xl hidden lg:block">
           YET ANOTHER <span class="text-[#f0db4f]">JS</span> FRAMEWORK...

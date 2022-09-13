@@ -43,8 +43,7 @@ const scrollTo = (sectionId: SectionIds) => {
     return;
   }
 
-  const headerHeight = document.getElementById("header").offsetHeight + 16;
-  const position = document.getElementById(sectionId).offsetTop - headerHeight;
+  const position = document.getElementById(sectionId).offsetTop - 16;
   window.scrollTo({ top: position, behavior: "smooth" });
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <Section title="🎓 Helpful Material">
+  <Section title="🎓 Helpful Material" bg-secondary>
     <div class="flex flex-col gap-4">
       <MaterialCollapsable
         v-for="material of data"

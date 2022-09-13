@@ -41,7 +41,7 @@ const contentList: Content[] = [
       url: "/assets/images/thumbnail1.jpg",
       alt: "thumbnail",
     },
-    tags: ["Article", "Test", "Ipsum", "Lorem"],
+    tags: ["article", "test", "ipsum", "lorem"],
     link: "",
   },
   {
@@ -49,7 +49,7 @@ const contentList: Content[] = [
     title: "I built a JavaScript framework",
     date: new Date("09/11/2021"),
     author: "Fireship",
-    tags: ["Javascript", "Fireship", "Framework"],
+    tags: ["javascript", "fireship", "framework"],
     link: "https://www.youtube.com/watch?v=SJeBRW1QQMA",
   },
   {
@@ -57,7 +57,7 @@ const contentList: Content[] = [
     title: "Vue",
     date: new Date("08/10/2022"),
     author: "yyx990803",
-    tags: ["Vue", "Framework", "Javascript"],
+    tags: ["vue", "framework", "javascript"],
     link: "https://github.com/vuejs/vue",
   },
 ];

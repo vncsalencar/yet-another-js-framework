@@ -16,7 +16,7 @@
       <p class="mb-4">
         <small>{{ formatTimeAgo(content.date) }}</small>
       </p>
-      <div class="flex gap-4 mb-2">
+      <div class="flex flex-wrap gap-4 mb-2">
         <Chip v-for="tag in content.tags" :title="tag"></Chip>
       </div>
     </div>
