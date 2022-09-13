@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10 py-4 border-b-2 border-white">
+  <header class="sticky top-0 z-10 py-4 border-b-2 border-white bg-bg">
     <div class="flex justify-between items-center">
       <div>
         <h1 class="text-4xl hidden lg:block">
@@ -16,10 +16,10 @@
       class="hidden md:block text-white hover:text-[#f0db4f] underline"
       >Github
     </a> -->
-      <button @click="toggleMenu" class="flex flex-col gap-1 hover:text-accent">
-        <div class="w-5 h-[2px] rounded-md bg-white"></div>
-        <div class="w-5 h-[2px] rounded-md bg-white"></div>
-        <div class="w-5 h-[2px] rounded-md bg-white"></div>
+      <button @click="toggleMenu" class="flex flex-col gap-1 group">
+        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
+        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
+        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
       </button>
     </div>
   </header>
