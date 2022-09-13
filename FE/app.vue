@@ -3,11 +3,11 @@
   <ProgressScrollBar></ProgressScrollBar>
   <Container>
     <Header id="header"></Header>
-    <FeatureSection id="feature"></FeatureSection>
+    <TrendingNpmSection id="feature"></TrendingNpmSection>
     <ContentSection id="content"></ContentSection>
-    <!-- <TwitterSection id="twitter"></TwitterSection> -->
-    <!-- <TiktokSection id="tiktok"></TiktokSection> -->
-    <!-- <RedditSection id="reddit"></RedditSection> -->
+    <TwitterSection id="twitter"></TwitterSection>
+    <TiktokSection id="tiktok"></TiktokSection>
+    <RedditSection id="reddit"></RedditSection>
     <HelpfulMaterialSection id="helpful"></HelpfulMaterialSection>
     <AboutSection id="about"></AboutSection>
   </Container>

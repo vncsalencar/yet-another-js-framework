@@ -1,5 +1,5 @@
 <template>
-  <Section title="🤖 Reddit">
+  <Section title="🤖 Reddit" bg-secondary>
     <div class="flex flex-col gap-4">
       <FeatureRedditPost :reddit-post-html="data"></FeatureRedditPost>
       <FeatureRedditPost :reddit-post-html="data2"></FeatureRedditPost>
