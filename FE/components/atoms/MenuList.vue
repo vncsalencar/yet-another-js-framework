@@ -4,7 +4,12 @@
       class="hover:scale-125 transition-all duration-250"
       v-for="item of listItems"
     >
-      <a class="text-3xl hover:text-accent" href="#">{{ item.name }}</a>
+      <button
+        class="text-3xl hover:text-accent"
+        @click="emit('changeSection', item.sectionId)"
+      >
+        {{ item.name }}
+      </button>
     </li>
   </ul>
 </template>
@@ -13,7 +18,11 @@
 defineProps<{
   listItems: {
     name: string;
-    link: string;
+    sectionId: SectionIds;
   }[];
+}>();
+
+const emit = defineEmits<{
+  (e: "changeSection", sectionId: SectionIds): void;
 }>();
 </script>

@@ -33,6 +33,16 @@ declare global {
     }
 
 
+    type SectionIds =
+        "home" |
+        "feature" |
+        "content" |
+        "twitter" |
+        "tiktok" |
+        "reddit" |
+        "helpful" |
+        "about"
+
 }
 
 export { }

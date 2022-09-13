@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { ContentType } from "../../types/enums";
 
 const props = defineProps<{

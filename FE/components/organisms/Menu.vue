@@ -19,27 +19,40 @@
       X
     </button>
 
-    <MenuList :list-items="listItems"></MenuList>
+    <MenuList
+      @change-section="changeSection"
+      :list-items="listItems"
+    ></MenuList>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useMenuStore } from "../../stores/menuStore";
+
+const emit = defineEmits<{
+  (e: "changeSection", sectionId: SectionIds): void;
+}>();
+
 const store = useMenuStore();
 
 const closeMenu = () => {
   store.toggle();
 };
 
+const changeSection = (sectionId: SectionIds) => {
+  closeMenu();
+  emit("changeSection", sectionId);
+};
+
 const listItems = [
-  { name: "Home", link: "#" },
-  { name: "Trending", link: "#" },
-  { name: "Content we liked", link: "#" },
-  { name: "Twitter", link: "#" },
-  { name: "Tiktok", link: "#" },
-  { name: "Reddit", link: "#" },
-  { name: "Helpful Material", link: "#" },
-  { name: "About this project", link: "#" },
+  { name: "Home", sectionId: "home" as SectionIds },
+  { name: "Trending", sectionId: "feature" as SectionIds },
+  { name: "Content we liked", sectionId: "content" as SectionIds },
+  { name: "Twitter", sectionId: "twitter" as SectionIds },
+  { name: "Tiktok", sectionId: "tiktok" as SectionIds },
+  { name: "Reddit", sectionId: "reddit" as SectionIds },
+  { name: "Helpful Material", sectionId: "helpful" as SectionIds },
+  { name: "About this project", sectionId: "about" as SectionIds },
 ];
 </script>
 
