@@ -1,4 +1,5 @@
 <template>
+  <Menu></Menu>
   <Container>
     <Header></Header>
     <FeatureSection></FeatureSection>
