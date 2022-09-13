@@ -1,12 +1,13 @@
 <template>
   <Menu @change-section="scrollTo"></Menu>
+  <ProgressScrollBar></ProgressScrollBar>
   <Container>
     <Header id="header"></Header>
     <FeatureSection id="feature"></FeatureSection>
     <ContentSection id="content"></ContentSection>
-    <TwitterSection id="twitter"></TwitterSection>
-    <TiktokSection id="tiktok"></TiktokSection>
-    <RedditSection id="reddit"></RedditSection>
+    <!-- <TwitterSection id="twitter"></TwitterSection> -->
+    <!-- <TiktokSection id="tiktok"></TiktokSection> -->
+    <!-- <RedditSection id="reddit"></RedditSection> -->
     <HelpfulMaterialSection id="helpful"></HelpfulMaterialSection>
     <AboutSection id="about"></AboutSection>
   </Container>
@@ -25,12 +26,16 @@ useHead({
 });
 
 onMounted(() => {
+  toggleMenuOnEsc();
+});
+
+const toggleMenuOnEsc = () => {
   document.onkeydown = (ev: KeyboardEvent) => {
     if (ev.key == "Escape") {
       store.toggle();
     }
   };
-});
+};
 
 const scrollTo = (sectionId: SectionIds) => {
   if (sectionId == "home") {

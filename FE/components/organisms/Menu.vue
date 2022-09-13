@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="fixed flex h-screen w-screen justify-center items-center m-0 p-0 z-50 overflow-hidden bg-bg"
+    class="fixed flex h-screen w-screen justify-center items-center m-0 p-0 z-30 overflow-hidden bg-bg"
     v-show="store.active"
   >
     <h1 class="absolute top-8 text-4xl hidden lg:block">

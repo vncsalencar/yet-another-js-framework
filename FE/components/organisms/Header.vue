@@ -17,9 +17,15 @@
       >Github
     </a> -->
       <button @click="toggleMenu" class="flex flex-col gap-1 group">
-        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
-        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
-        <div class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"></div>
+        <div
+          class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"
+        ></div>
+        <div
+          class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"
+        ></div>
+        <div
+          class="w-5 h-[2px] rounded-md bg-white group-hover:bg-accent"
+        ></div>
       </button>
     </div>
   </header>
@@ -29,6 +35,11 @@
 import { useMenuStore } from "../../stores/menuStore";
 
 const store = useMenuStore();
+
+onMounted(() => {
+ 
+});
+
 const toggleMenu = () => {
   store.toggle();
 };
