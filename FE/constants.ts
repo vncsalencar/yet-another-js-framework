@@ -1,1 +1,0 @@
-export const API_CMS = "https://yajsf-backend.up.railway.app/api/strapi"

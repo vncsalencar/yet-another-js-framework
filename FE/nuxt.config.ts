@@ -20,4 +20,10 @@ export default defineNuxtConfig({
             pathPrefix: false,
         }
     ],
+    runtimeConfig: {
+        public: {
+            CMS: process.env.CMS,
+            API: process.env.API
+        }
+    }
 })

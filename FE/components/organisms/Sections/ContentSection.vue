@@ -1,8 +1,10 @@
 <template>
   <Section title="📚 Content we liked">
-    <ul>
+    <!-- <ul>
       <ContentCard :content="contentList.data[0].attributes"></ContentCard>
-    </ul>
+    </ul> -->
+
+    <pre>{{ contentList }}</pre>
 
     <div class="flex justify-end items-center gap-4 mt-4">
       <small> 10 pages </small>
@@ -18,13 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import { API_CMS } from "~/constants";
-
-const { data: contentList, pending } = await useFetch<{
-  data: {
-    attributes: Content;
-  }[];
-}>(`${API_CMS}?content-type=liked`);
+const config = useRuntimeConfig()
+const { data: contentList, pending } = await useFetch(
+  `${config.CMS}?content-type=liked`,
+  { initialCache: false }
+);
 
 const activePage = ref(1);
 const pageChange = (newPage: number) => {};
