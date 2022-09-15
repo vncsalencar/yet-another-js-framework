@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "helpful_material_items",
+  "info": {
+    "singularName": "helpful-material-item",
+    "pluralName": "helpful-material-items",
+    "displayName": "HelpfulMaterialItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
