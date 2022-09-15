@@ -13,14 +13,12 @@ declare global {
 
     interface Content {
         title: string,
-        type: ContentType,
-        date: Date,
+        contentType : ContentType,
+        date: string,
         author: string,
-        thumbnail?: {
-            url: string,
-            alt: string
-        },
-        tags: string[],
+        thumbnailAlt: string,
+        thumbnailUrl: string,
+        tags: string,
         link: string,
     }
 
