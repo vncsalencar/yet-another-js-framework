@@ -21,9 +21,11 @@ defmodule YajsfBackendWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", YajsfBackendWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", YajsfBackendWeb do
+    pipe_through :api
+    get "/ping", PingController, :index
+    get "/strapi", StrapiController, :index
+  end
 
   # Enables LiveDashboard only for development
   #
