@@ -20,14 +20,12 @@ defmodule YajsfBackendWeb.StrapiController do
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=#{limit}"
 
-    IO.puts(request_url)
-
     case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         conn |> put_status(:ok) |> json(Jason.decode!(body))
 
       {:ok, %HTTPoison.Response{status_code: status_code, body: body}} ->
-        conn |> put_status(status_code) |> json(Jason.decode!(body))
+        conn |> put_status(status_code) |> json(body)
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         conn
