@@ -23,7 +23,8 @@ defmodule YajsfBackendWeb.StrapiController do
 
     case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        conn |> put_status(:ok) |> json(Jason.decode!(body))
+        decoded = Jason.decode!(body)
+        conn |> put_status(:ok) |> json(strip(decoded))
 
       {:ok, %HTTPoison.Response{status_code: status_code, body: body}} ->
         conn |> put_status(status_code) |> json(body)
@@ -32,6 +33,28 @@ defmodule YajsfBackendWeb.StrapiController do
         conn
         |> put_status(:internal_server_error)
         |> json(%{"error" => "Internal server error", "reason" => reason})
+    end
+  end
+
+  defp strip(object) do
+    case object do
+      %{"data" => data, "meta" => meta} ->
+        %{"data" => strip(data), "meta" => meta}
+
+      %{"data" => data} ->
+        strip(data)
+
+      %{"attributes" => attributes, "id" => id} ->
+        Map.put(strip(attributes), "id", id)
+
+      %{} ->
+        Map.new(object, fn {k, v} -> {k, strip(v)} end)
+
+      [_ | _] ->
+        Enum.map(object, fn v -> strip(v) end)
+
+      _ ->
+        object
     end
   end
 end
