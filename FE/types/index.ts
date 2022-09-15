@@ -1,7 +1,7 @@
 import { ContentType } from "./enums"
 
 declare global {
-    interface FeaturedFramework {
+    interface NpmPackage {
         title: string;
         description: string;
         version: string;

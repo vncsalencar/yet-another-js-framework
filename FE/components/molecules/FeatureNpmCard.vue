@@ -26,6 +26,6 @@
 
 <script setup lang="ts">
 defineProps<{
-  featuredFramework: FeaturedFramework;
+  featuredFramework: NpmPackage;
 }>();
 </script>

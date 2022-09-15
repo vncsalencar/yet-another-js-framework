@@ -2,15 +2,22 @@
   <Section title="🔥 Trending on NPM" bg-secondary>
     <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <FeatureNpmCard
-        v-for="framework in featureFrameworks"
+        v-for="framework in npmPackages"
         :featured-framework="framework"
       ></FeatureNpmCard>
+
+      <!-- <FeatureNpmCardSkeleton
+        v-if="loading"
+        v-for="i in 3"
+      ></FeatureNpmCardSkeleton> -->
     </ul>
   </Section>
 </template>
 
 <script setup lang="ts">
-const featureFrameworks: FeaturedFramework[] = [
+import { Ref } from "vue";
+
+const npmPackages: Ref<NpmPackage[]> = ref([
   {
     title: "Vue",
     description:
@@ -41,5 +48,5 @@ const featureFrameworks: FeaturedFramework[] = [
     weeklyDownloads: 4000000,
     githubStars: 32400,
   },
-];
+]);
 </script>
