@@ -18,7 +18,8 @@ defmodule YajsfBackendWeb.StrapiController do
     request_url =
       "#{strapi_url}/api/#{api_path}" <>
         "?pagination[page]=#{page}" <>
-        "&pagination[pageSize]=#{limit}"
+        "&pagination[pageSize]=#{limit}" <>
+        "&populate=*"
 
     case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
