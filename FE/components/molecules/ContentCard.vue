@@ -34,9 +34,13 @@ const props = defineProps<{
 }>();
 
 const tags = computed(() => {
-  let tagsArray = props.content.tags.split(",");
-  tagsArray = tagsArray.map((element) => element.trim());
-  return tagsArray;
+  let tags = props.content.tags;
+  if (tags && tags.includes(",")) {
+    let tagsArray = tags.split(",");
+    tagsArray = tagsArray.map((element) => element.trim());
+    return tagsArray;
+  }
+  return [tags];
 });
 
 const thumbnail = computed(() => {

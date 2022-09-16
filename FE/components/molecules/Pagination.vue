@@ -13,7 +13,7 @@
 
     <li>
       <PageBtn
-        v-for="i of range"
+        v-for="i in pageCount"
         :page-number="i"
         @page-change="changePage(i)"
         :active="i == activePage"
@@ -37,7 +37,8 @@
 const props = defineProps<{
   activePage: number;
   totalPages: number;
-  maxPages: number;
+  pageSize: number;
+  pageCount: number
 }>();
 const emit = defineEmits<{ (e: "pageChange", activePage: number): void }>();
 const activePage = ref(props.activePage);
@@ -47,7 +48,7 @@ const range = computed(() => {
 
   for (
     let i = firstPage.value;
-    i <= Math.min(firstPage.value + props.maxPages - 1, props.totalPages);
+    i <= Math.min(firstPage.value + props.pageSize - 1, props.totalPages);
     i++
   ) {
     range.push(i);
@@ -61,8 +62,8 @@ const firstPage = computed(() => {
     return 1;
   }
 
-  if (activePage.value + props.maxPages > props.totalPages) {
-    return props.totalPages - props.maxPages + 1;
+  if (activePage.value + props.pageSize > props.totalPages) {
+    return props.totalPages - props.pageSize + 1;
   }
 
   return activePage.value;

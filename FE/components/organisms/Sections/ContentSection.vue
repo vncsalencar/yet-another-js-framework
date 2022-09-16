@@ -1,18 +1,23 @@
 <template>
   <Section title="📚 Content we liked">
-    <!-- <ul>
-      <ContentCard :content="contentList.data[0].attributes"></ContentCard>
-    </ul> -->
+    <ul v-if="pending">
+      <ContentCardSkeleton v-for="i in 3"></ContentCardSkeleton>
+    </ul>
 
-    <pre>{{ contentList }}</pre>
+    <ul v-else>
+      <ContentCard
+        v-for="content of contentList.data"
+        :content="content"
+      ></ContentCard>
+    </ul>
 
     <div class="flex justify-end items-center gap-4 mt-4">
-      <small> 10 pages </small>
+      <small> {{ pageCount }} pages </small>
       <Pagination
         :active-page="activePage"
-        :page-size="3"
-        :total-pages="10"
-        :max-pages="5"
+        :total-pages="totalPages"
+        :page-size="pageSize"
+        :page-count="pageCount"
         @page-change="pageChange"
       ></Pagination>
     </div>
@@ -20,12 +25,30 @@
 </template>
 
 <script setup lang="ts">
-const config = useRuntimeConfig()
-const { data: contentList, pending } = await useFetch(
-  `${config.CMS}?content-type=liked`,
-  { initialCache: false }
-);
-
+const config = useRuntimeConfig();
+const URL = `${config.CMS}?content-type=liked`;
 const activePage = ref(1);
-const pageChange = (newPage: number) => {};
+const totalPages = ref(0);
+const pageCount = ref(0);
+const pageSize = ref(3);
+
+const { data: contentList, pending } = await useFetch<Page<Content>>(URL, {
+  initialCache: false,
+});
+totalPages.value =
+  (contentList.value.meta.pagination.pageCount + pageSize.value - 1) /
+  pageSize.value;
+pageCount.value = contentList.value.meta.pagination.pageCount;
+
+const pageChange = async (newPage: number) => {
+  activePage.value = newPage;
+  pending.value = true;
+  contentList.value = await $fetch(URL, {
+    params: {
+      page: newPage,
+    },
+  });
+  console.log(contentList.value);
+  pending.value = false;
+};
 </script>
