@@ -46,7 +46,4 @@ defmodule YajsfBackendWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug YajsfBackendWeb.Router
-
-  plug CORSPlug,
-    origin: ["*", "https://yajsf-backend.up.railway.app", "http://yajsf-backend.up.railway.app"]
 end
