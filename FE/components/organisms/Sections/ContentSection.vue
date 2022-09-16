@@ -24,6 +24,9 @@
 </template>
 
 <script setup lang="ts">
+import { useScrollProgressStore } from "~/stores/scrollProgressStore";
+
+const store = useScrollProgressStore();
 const config = useRuntimeConfig();
 const URL = `${config.CMS}?content-type=liked`;
 const activePage = ref(1);
@@ -44,5 +47,9 @@ const pageChange = async (newPage: number) => {
     },
   });
   pending.value = false;
+  //TODO: find a way to check if render is finished instead of timeout()
+  setTimeout(() => {
+    store.calculatePageHeight();
+  }, 500);
 };
 </script>
