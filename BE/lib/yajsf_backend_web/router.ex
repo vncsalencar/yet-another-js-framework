@@ -15,9 +15,8 @@ defmodule YajsfBackendWeb.Router do
 
     plug CORSPlug,
       origin: [
-        "*",
-        "https://yajsf-backend.up.railway.app",
-        "http://yajsf-backend.up.railway.app",
+        "https://yajsf-front.up.railway.app",
+        "http://yajsf-front.up.railway.app",
         "https://localhost:3000",
         "http://localhost:3000",
         "http://localhost",
