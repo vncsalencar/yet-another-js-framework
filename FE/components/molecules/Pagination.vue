@@ -13,7 +13,7 @@
 
     <li>
       <PageBtn
-        v-for="i of pageCount"
+        v-for="i of range"
         :page-number="i"
         @page-change="changePage(i)"
         :active="i == activePage"
