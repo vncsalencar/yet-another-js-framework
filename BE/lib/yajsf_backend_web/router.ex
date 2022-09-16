@@ -17,6 +17,8 @@ defmodule YajsfBackendWeb.Router do
       origin: [
         "https://yajsf-front.up.railway.app",
         "http://yajsf-front.up.railway.app",
+        "https://localhost:3000",
+        "http://localhost:3000",
         "http://localhost",
         "https://localhost"
       ]
