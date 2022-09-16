@@ -15,7 +15,6 @@
       <small> {{ pageCount }} pages </small>
       <Pagination
         :active-page="activePage"
-        :total-pages="totalPages"
         :page-size="pageSize"
         :page-count="pageCount"
         @page-change="pageChange"
@@ -28,16 +27,12 @@
 const config = useRuntimeConfig();
 const URL = `${config.CMS}?content-type=liked`;
 const activePage = ref(1);
-const totalPages = ref(0);
 const pageCount = ref(0);
 const pageSize = ref(3);
 
 const { data: contentList, pending } = await useFetch<Page<Content>>(URL, {
   initialCache: false,
 });
-totalPages.value =
-  (contentList.value.meta.pagination.pageCount + pageSize.value - 1) /
-  pageSize.value;
 pageCount.value = contentList.value.meta.pagination.pageCount;
 
 const pageChange = async (newPage: number) => {
@@ -48,7 +43,6 @@ const pageChange = async (newPage: number) => {
       page: newPage,
     },
   });
-  console.log(contentList.value);
   pending.value = false;
 };
 </script>

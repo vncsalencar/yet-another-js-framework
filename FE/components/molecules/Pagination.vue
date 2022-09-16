@@ -13,7 +13,7 @@
 
     <li>
       <PageBtn
-        v-for="i in pageCount"
+        v-for="i of pageCount"
         :page-number="i"
         @page-change="changePage(i)"
         :active="i == activePage"
@@ -25,7 +25,7 @@
         aria-label="Next page"
         class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
         @click="changePage(1, true)"
-        v-show="activePage < totalPages"
+        v-show="activePage < pageCount"
       >
         &gt
       </button>
@@ -36,7 +36,6 @@
 <script setup lang="ts">
 const props = defineProps<{
   activePage: number;
-  totalPages: number;
   pageSize: number;
   pageCount: number
 }>();
@@ -48,7 +47,7 @@ const range = computed(() => {
 
   for (
     let i = firstPage.value;
-    i <= Math.min(firstPage.value + props.pageSize - 1, props.totalPages);
+    i <= Math.min(firstPage.value + props.pageSize - 1, props.pageCount);
     i++
   ) {
     range.push(i);
@@ -62,8 +61,8 @@ const firstPage = computed(() => {
     return 1;
   }
 
-  if (activePage.value + props.pageSize > props.totalPages) {
-    return props.totalPages - props.pageSize + 1;
+  if (activePage.value + props.pageSize > props.pageCount) {
+    return props.pageCount - props.pageSize + 1;
   }
 
   return activePage.value;
