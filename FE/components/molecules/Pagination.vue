@@ -36,8 +36,8 @@
 <script setup lang="ts">
 const props = defineProps<{
   activePage: number;
-  pageSize: number;
-  pageCount: number
+  pageCount: number;
+  maxPages: number;
 }>();
 const emit = defineEmits<{ (e: "pageChange", activePage: number): void }>();
 const activePage = ref(props.activePage);
@@ -47,7 +47,7 @@ const range = computed(() => {
 
   for (
     let i = firstPage.value;
-    i <= Math.min(firstPage.value + props.pageSize - 1, props.pageCount);
+    i <= Math.min(firstPage.value + props.maxPages - 1, props.pageCount);
     i++
   ) {
     range.push(i);
@@ -57,15 +57,19 @@ const range = computed(() => {
 });
 
 const firstPage = computed(() => {
-  if (activePage.value <= 1) {
-    return 1;
+  if (props.pageCount > props.maxPages) {
+    if (activePage.value <= 1) {
+      return 1;
+    }
+
+    if (activePage.value + props.maxPages > props.pageCount) {
+      return props.pageCount - props.maxPages + 1;
+    }
+
+    return activePage.value;
   }
 
-  if (activePage.value + props.pageSize > props.pageCount) {
-    return props.pageCount - props.pageSize + 1;
-  }
-
-  return activePage.value;
+  return 1;
 });
 
 const changePage = (pageClicked?: number, increment: boolean = false) => {

@@ -15,8 +15,8 @@
       <small> {{ pageCount }} pages </small>
       <Pagination
         :active-page="activePage"
-        :page-size="pageSize"
         :page-count="pageCount"
+        :max-pages="maxPages"
         @page-change="pageChange"
       ></Pagination>
     </div>
@@ -28,7 +28,7 @@ const config = useRuntimeConfig();
 const URL = `${config.CMS}?content-type=liked`;
 const activePage = ref(1);
 const pageCount = ref(0);
-const pageSize = ref(3);
+const maxPages = ref(5);
 
 const { data: contentList, pending } = await useFetch<Page<Content>>(URL, {
   initialCache: false,

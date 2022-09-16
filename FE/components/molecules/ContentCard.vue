@@ -1,28 +1,31 @@
 <template>
-  <li
-    iv
-    class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white first:border-t-2"
-  >
-    <div>
-      <small class="text-accent">{{ content.contentType }}</small>
-      <p>
-        <b class="mb-2">{{ content.author }}</b>
-      </p>
-      <a :href="content.link" target="_blank">
-        <h3 class="text-xl mb-1 cursor-pointer hover:text-accent">
+  <li>
+    <a
+      :href="content.link"
+      target="_blank"
+      class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white first:border-t-2 group"
+    >
+      <div>
+        <small class="text-accent">{{ content.contentType }}</small>
+        <p>
+          <b class="mb-2">{{ content.author }}</b>
+        </p>
+        <h3
+          class="text-xl mb-1 cursor-pointer transition duration-300 group-hover:text-accent"
+        >
           {{ content.title }}
         </h3>
-      </a>
-      <p class="mb-4">
-        <small>{{ formatTimeAgo(new Date(content.date)) }}</small>
-      </p>
-      <div class="flex flex-wrap gap-4 mb-2">
-        <Chip v-for="tag in tags" :title="tag"></Chip>
+        <p class="mb-4">
+          <small>{{ formatTimeAgo(new Date(content.date)) }}</small>
+        </p>
+        <div class="flex flex-wrap gap-4 mb-2">
+          <Chip v-for="tag in tags" :title="tag"></Chip>
+        </div>
       </div>
-    </div>
-    <div class="hidden md:block">
-      <Thumbnail v-bind="thumbnail" :link="content.link"></Thumbnail>
-    </div>
+      <div class="hidden md:block">
+        <Thumbnail v-bind="thumbnail" :link="content.link"></Thumbnail>
+      </div>
+    </a>
   </li>
 </template>
 

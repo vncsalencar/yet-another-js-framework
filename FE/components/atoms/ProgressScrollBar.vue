@@ -4,6 +4,10 @@
 
 <script setup lang="ts">
 onMounted(() => {
+  calculateBar();
+});
+
+const calculateBar = () => {
   const scrollProgress = document.getElementById("scroll-progress");
   const height =
     document.documentElement.scrollHeight -
@@ -14,5 +18,5 @@ onMounted(() => {
       document.body.scrollTop || document.documentElement.scrollTop;
     scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
   });
-});
+};
 </script>
