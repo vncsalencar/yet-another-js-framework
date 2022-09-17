@@ -30,11 +30,26 @@ defmodule YajsfBackendWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/" do
+    pipe_through :browser
+  end
+
   # Other scopes may use custom stacks.
   scope "/api", YajsfBackendWeb do
     pipe_through :api
     get "/ping", PingController, :index
-    get "/strapi", StrapiController, :index
+    get "/strapi/liked", StrapiController, :liked
+    get "/strapi/helpful", StrapiController, :helpful
+  end
+
+  pipeline :openapi do
+    plug OpenApiSpex.Plug.PutApiSpec, module: YajsfBackendWeb.ApiSpec
+  end
+
+  scope "/api" do
+    pipe_through :openapi
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
   end
 
   # Enables LiveDashboard only for development

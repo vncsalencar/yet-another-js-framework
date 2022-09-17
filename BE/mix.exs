@@ -57,7 +57,8 @@ defmodule YajsfBackend.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.8"},
-      {:cors_plug, "~> 3.0"}
+      {:cors_plug, "~> 3.0"},
+      {:open_api_spex, "~> 3.12"}
     ]
   end
 
