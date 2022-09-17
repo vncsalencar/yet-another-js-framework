@@ -28,24 +28,26 @@ const { active } = storeToRefs(menuStore);
 const header = ref(null);
 let lastScroll = 0;
 
-watch(active,(newActive, oldActive)=>{
-  if(newActive != oldActive){
+watch(active, (newActive, oldActive) => {
+  if (newActive != oldActive) {
     header.value.classList.add("header-show");
     header.value.classList.remove("header-hide");
   }
-})
+});
 
-window.addEventListener("scroll", () => {
-  let currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll) {
-    header.value.classList.add("header-hide");
-    header.value.classList.remove("header-show");
-  } else {
-    header.value.classList.add("header-show");
-    header.value.classList.remove("header-hide");
-  }
+onMounted(() => {
+  window.addEventListener("scroll", () => {
+    let currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll) {
+      header.value.classList.add("header-hide");
+      header.value.classList.remove("header-show");
+    } else {
+      header.value.classList.add("header-show");
+      header.value.classList.remove("header-hide");
+    }
 
-  lastScroll = currentScroll;
+    lastScroll = currentScroll;
+  });
 });
 </script>
 
