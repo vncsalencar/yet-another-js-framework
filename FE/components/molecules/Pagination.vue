@@ -12,12 +12,12 @@
     </li>
 
     <li>
-      <PageBtn
+      <BtnPage
         v-for="i of range"
         :page-number="i"
         @page-change="changePage(i)"
         :active="i == activePage"
-      ></PageBtn>
+      ></BtnPage>
     </li>
 
     <li>
