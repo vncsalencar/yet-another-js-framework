@@ -2,6 +2,7 @@
   <header
     class="sticky top-0 h-[70px] md:h-[98px] z-10 py-4 border-b-2 border-white bg-primary"
     ref="header"
+    id="header"
   >
     <div class="flex justify-between items-center px-4 max-w-[1200px] mx-auto">
       <div>
@@ -18,4 +19,52 @@
   </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useMenuStore } from "~/stores/menuStore";
+
+const menuStore = useMenuStore();
+const { active } = storeToRefs(menuStore);
+const header = ref(null);
+let lastScroll = 0;
+
+watch(active,(newActive, oldActive)=>{
+  if(newActive != oldActive){
+    header.value.classList.add("header-show");
+    header.value.classList.remove("header-hide");
+  }
+})
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll) {
+    header.value.classList.add("header-hide");
+    header.value.classList.remove("header-show");
+  } else {
+    header.value.classList.add("header-show");
+    header.value.classList.remove("header-hide");
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+<style scoped>
+#header {
+  transition: translate 0.2s linear;
+}
+
+.header-hide {
+  translate: 0 -70px;
+}
+
+.header-show {
+  translate: 0 0;
+}
+
+@media (min-width: 768px) {
+  .header-hide {
+    translate: 0 -98px;
+  }
+}
+</style>
