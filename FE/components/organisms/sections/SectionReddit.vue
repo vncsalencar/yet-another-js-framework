@@ -1,9 +1,9 @@
 <template>
   <Section title="🤖 Reddit" bg-secondary>
     <div class="flex flex-col gap-4">
-      <FeatureRedditPost :reddit-post-html="data"></FeatureRedditPost>
-      <FeatureRedditPost :reddit-post-html="data2"></FeatureRedditPost>
-      <FeatureRedditPost :reddit-post-html="data3"></FeatureRedditPost>
+      <CardReddit :reddit-post-html="data"></CardReddit>
+      <CardReddit :reddit-post-html="data2"></CardReddit>
+      <CardReddit :reddit-post-html="data3"></CardReddit>
     </div>
   </Section>
 </template>

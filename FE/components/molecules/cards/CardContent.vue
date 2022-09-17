@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { ContentType } from "../../types/enums";
+import { ContentType } from "../../../types/enums";
 
 const props = defineProps<{
   content: Content;

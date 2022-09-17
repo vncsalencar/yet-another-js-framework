@@ -1,9 +1,9 @@
 <template>
   <Section title="🎵 Tiktok">
     <div class="flex flex-col lg:flex-row justify-center items-center lg:gap-4">
-      <FeaturedTiktok :tiktok-html="data"></FeaturedTiktok>
-      <FeaturedTiktok :tiktok-html="data"></FeaturedTiktok>
-      <FeaturedTiktok :tiktok-html="data"></FeaturedTiktok>
+      <CardTiktok :tiktok-html="data"></CardTiktok>
+      <CardTiktok :tiktok-html="data"></CardTiktok>
+      <CardTiktok :tiktok-html="data"></CardTiktok>
     </div>
   </Section>
 </template>

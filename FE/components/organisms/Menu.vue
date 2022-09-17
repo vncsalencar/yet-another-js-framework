@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
 import { useMenuStore } from "../../stores/menuStore";
 
 const emit = defineEmits<{

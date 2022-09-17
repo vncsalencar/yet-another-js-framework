@@ -1,14 +1,14 @@
 <template>
   <Section title="📚 Content we liked">
     <ul v-if="pending">
-      <ContentCardSkeleton v-for="i in 3"></ContentCardSkeleton>
+      <SkeletonCardContet v-for="i in 3"></SkeletonCardContet>
     </ul>
 
     <ul v-else>
-      <ContentCard
+      <CardContent
         v-for="content of contentList.data"
         :content="content"
-      ></ContentCard>
+      ></CardContent>
     </ul>
 
     <div class="flex justify-end items-center gap-4 mt-4">

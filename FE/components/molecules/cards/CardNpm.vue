@@ -1,8 +1,8 @@
 <template>
   <li>
-  <NuxtLink
+  <a
     class="block w-full mx-auto border-solid p-2 border-2 border-white transition duration-300 hover:border-[#f0db4f]"
-    to="#"
+    href="#"
     target="_blank"
   >
     <h3 class="text-xl">{{ featuredFramework.title }}</h3>
@@ -20,7 +20,7 @@
     <p>
       <small> Github ⭐: {{ formatCompactNumber(featuredFramework.githubStars) }} </small>
     </p>
-  </NuxtLink>
+  </a>
 </li>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <Section title="🔥 Trending on NPM" bg-secondary>
     <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <FeatureNpmCard
+      <CardNpm
         v-for="framework in npmPackages"
         :featured-framework="framework"
-      ></FeatureNpmCard>
+      ></CardNpm>
 
       <!-- <FeatureNpmCardSkeleton
         v-if="loading"

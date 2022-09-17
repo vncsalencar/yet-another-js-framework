@@ -4,13 +4,13 @@
   <Container>
     <Header id="header"></Header>
   
-    <TrendingNpmSection id="feature"></TrendingNpmSection>
-    <ContentSection id="content"></ContentSection>
+    <SectionNpm id="feature"></SectionNpm>
+    <SectionContent id="content"></SectionContent>
     <!-- <TwitterSection id="twitter"></TwitterSection> -->
     <!-- <TiktokSection id="tiktok"></TiktokSection> -->
     <!-- <RedditSection id="reddit"></RedditSection> -->
-    <HelpfulMaterialSection id="helpful"></HelpfulMaterialSection>
-    <AboutSection id="about"></AboutSection>
+    <SectionHelpfulMaterial id="helpful"></SectionHelpfulMaterial>
+    <SectionAbout id="about"></SectionAbout>
   </Container>
 </template>
 
