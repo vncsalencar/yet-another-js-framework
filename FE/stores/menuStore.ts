@@ -5,9 +5,12 @@ export const useMenuStore = defineStore("menu", {
     actions: {
         toggle() {
             this.active = !this.active
-            this.active ?
+
+            if (this.active) {
                 document.querySelector("body").classList.add("overflow-hidden")
-                : document.querySelector("body").classList.remove("overflow-hidden")
+                return;
+            }
+            document.querySelector("body").classList.remove("overflow-hidden")
         }
     }
 })

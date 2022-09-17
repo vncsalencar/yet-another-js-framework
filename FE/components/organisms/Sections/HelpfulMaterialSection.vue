@@ -12,6 +12,6 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
 const { data: materialList, pending } = await useFetch<Page<HelpfulMaterial>>(
-  `${config.CMS}?content-type=helpful`
+  `${config.CMS}/helpful`
 );
 </script>

@@ -28,7 +28,7 @@ import { useScrollProgressStore } from "~/stores/scrollProgressStore";
 
 const store = useScrollProgressStore();
 const config = useRuntimeConfig();
-const URL = `${config.CMS}?content-type=liked`;
+const URL = `${config.CMS}/liked`;
 const activePage = ref(1);
 const pageCount = ref(0);
 const maxPages = ref(5);

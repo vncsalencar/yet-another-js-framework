@@ -3,7 +3,7 @@
     <a
       :href="content.link"
       target="_blank"
-      class="flex justify-between gap-4 w-100 py-4 border-b-2 border-white first:border-t-2 group"
+      class="flex justify-between items-center gap-4 w-100  py-4 border-b-2 border-white  group"
     >
       <div>
         <small class="text-accent">{{ content.contentType }}</small>
