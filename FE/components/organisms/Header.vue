@@ -79,19 +79,23 @@ const toggleMenu = () => {
 
 @keyframes upper-burger--menu-closing {
   from {
-    transform: rotate(45deg) scale(1.2) translate(0px, 0px);
+    transform: rotate(45deg)  translate(4px, 5px);
+    border-radius: 0;
   }
   to {
-    transform: rotate(0deg) scale(1) translate(0px, 0px);
+    transform: rotate(0deg)  translate(0px, 0px);
+    border-radius: 0.375rem;
   }
 }
 
 @keyframes upper-burger--menu-opening {
   from {
-    transform: rotate(0deg) scale(1) translate(0px, 0px);
+    transform: rotate(0deg)  translate(0px, 0px);
+    border-radius: 0.375rem;
   }
   to {
-    transform: rotate(45deg) scale(1.2) translate(0px, 0px);
+    transform: rotate(45deg)  translate(5px, 4px);
+    border-radius: 0;
   }
 }
 
@@ -149,19 +153,26 @@ const toggleMenu = () => {
 
 @keyframes bottom-burger--menu-closing {
   from {
-    transform: rotate(-45deg) scale(1.2) translate(3px, -3px);
+    transform: rotate(-45deg)  translate(4px, -4px);
+    border-radius: 0;
   }
   to {
-    transform: rotate(0deg) scale(1) translate(0px, 0px);
+    transform: rotate(0deg)  translate(0px, 0px);
+    border-radius: 0.375rem;
+
   }
 }
 
 @keyframes bottom-burger--menu-opening {
   from {
-    transform: rotate(0deg) scale(1) translate(0px, 0px);
+    transform: rotate(0deg)  translate(0px, 0px);
+    border-radius: 0.375rem;
+
   }
   to {
-    transform: rotate(-45deg) scale(1.2) translate(3px, -3px);
+    transform: rotate(-45deg)  translate(4px, -4px);
+    border-radius: 0;
+
   }
 }
 
