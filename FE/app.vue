@@ -6,9 +6,9 @@
   
     <SectionNpm id="feature"></SectionNpm>
     <SectionContent id="content"></SectionContent>
-    <!-- <TwitterSection id="twitter"></TwitterSection> -->
-    <!-- <TiktokSection id="tiktok"></TiktokSection> -->
-    <!-- <RedditSection id="reddit"></RedditSection> -->
+    <!-- <SectionTwitter id="twitter"></SectionTwitter> -->
+    <!-- <SectionTiktok id="tiktok"></SectionTiktok> -->
+    <!-- <SectionReddit id="reddit"></SectionReddit> -->
     <SectionHelpfulMaterial id="helpful"></SectionHelpfulMaterial>
     <SectionAbout id="about"></SectionAbout>
   </Container>

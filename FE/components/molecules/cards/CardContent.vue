@@ -3,7 +3,7 @@
     <a
       :href="content.link"
       target="_blank"
-      class="flex justify-between items-center gap-4 w-100  py-4 border-b-2 border-white  group"
+      class="flex justify-between items-center gap-4 w-100 py-4 border-b-2 border-white group"
     >
       <div>
         <small class="text-accent">{{ content.contentType }}</small>
@@ -11,7 +11,7 @@
           <b class="mb-2">{{ content.author }}</b>
         </p>
         <h3
-          class="text-xl mb-1 cursor-pointer transition duration-300 group-hover:text-accent"
+          class="text-xl mb-1 cursor-pointer transition line-clamp-2 md:line-clamp-1 duration-300 group-hover:text-accent"
         >
           {{ content.title }}
         </h3>
@@ -57,20 +57,34 @@ const thumbnail = computed(() => {
   if (props.content.contentType == ContentType.Project) {
     return {
       alt: "Github",
-      url: "/assets/images/github-logo.png",
+      url: "/assets/images/logo-github.png",
     };
   }
 
   if (props.content.contentType == ContentType.Article) {
     return {
       alt: props.content.thumbnailAlt || props.content.title,
-      url: props.content.thumbnailUrl,
+      url: props.content.thumbnailUrl || getArticleThumbnail(),
     };
   }
 });
 
 const getYoutubeThumbnail = (): string => {
   const videoId = props.content.link.split("v=")[1];
-  return `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+};
+
+const getArticleThumbnail = (): string => {
+  if (tags.value.includes("javascript")) {
+    return "/assets/images/logo-js.png";
+  }
+
+  if (tags.value.includes("html")) {
+    return "/assets/images/logo-html.png";
+  }
+
+  if (tags.value.includes("css")) {
+    return "/assets/images/logo-css.png";
+  }
 };
 </script>
