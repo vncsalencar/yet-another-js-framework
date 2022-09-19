@@ -3,7 +3,7 @@
     <div
       v-show="!menuStore.active"
       id="scroll-progress"
-      class="fixed top w-0 h-1 bg-accent z-20"
+      class="fixed top w-0 h-1 bg-primary z-20"
     ></div>
   </Transition>
 </template>
@@ -61,6 +61,8 @@ const calculateBar = () => {
     width: v-bind(scrollWidth);
   }
 }
+
+
 
 .progress-scroll-enter-active {
   animation: progress-scroll-opening 0.2s linear;

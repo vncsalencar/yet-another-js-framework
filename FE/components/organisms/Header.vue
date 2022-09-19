@@ -1,18 +1,20 @@
 <template>
   <header
-    class="sticky top-0 h-[70px] md:h-[98px] z-10 py-4 border-b-2 border-white bg-primary"
+    class="sticky top-0 h-[70px] md:h-[98px] z-10 py-4 bg-accent"
     ref="header"
     id="header"
   >
     <div class="flex justify-between items-center px-4 max-w-[1200px] mx-auto">
       <div>
-        <h1 class="text-primary hidden lg:block">
-          YET ANOTHER <span class="text-[#f0db4f]">JS</span> FRAMEWORK...
+        <h1 class="text-primary hidden md:block">
+          YET ANOTHER <span class="text-white">JS</span> FRAMEWORK...
         </h1>
-        <h1 class="text-primary text-4xl block lg:hidden">
-          YA<span class="text-[#f0db4f]">JS</span>F...
+        <h1 class="text-primary text-4xl block md:hidden">
+          YA<span class="text-white">JS</span>F...
         </h1>
-        <p class="hidden lg:block">Making sense of the Frontend world</p>
+        <p class="hidden md:block">
+          <b class="text-primary ">Making sense of the Frontend world</b>
+        </p>
       </div>
       <BtnHamburger></BtnHamburger>
     </div>
@@ -22,42 +24,51 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useMenuStore } from "~/stores/menuStore";
+import { useScrollProgressStore } from "~~/stores/scrollProgressStore";
 
 const menuStore = useMenuStore();
+const progressBarStore = useScrollProgressStore();
 const { active } = storeToRefs(menuStore);
 const header = ref(null);
 let lastScroll = 0;
 
-// watch(active, (newActive, oldActive) => {
-//   if (newActive != oldActive) {
-//     header.value.classList.add("header-show");
-//     header.value.classList.remove("header-hide");
-//   }
-// });
+watch(active, (newActive, oldActive) => {
+  if (newActive != oldActive) {
+    showHeader();
+  }
+});
 
-// onMounted(() => {
-//   window.addEventListener("scroll", () => {
-//     let currentScroll = window.pageYOffset;
-//     if (currentScroll > lastScroll) {
-//       header.value.classList.add("header-hide");
-//       header.value.classList.remove("header-show");
-//     } else {
-//       header.value.classList.add("header-show");
-//       header.value.classList.remove("header-hide");
-//     }
+onMounted(() => {
+  window.addEventListener("scroll", () => {
+    let currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll) {
+      hideHeader();
+    } else {
+      showHeader();
+    }
 
-//     lastScroll = currentScroll;
-//   });
-// });
+    lastScroll = currentScroll;
+  });
+});
+
+const showHeader = () => {
+  header.value.classList.add("header-show");
+  header.value.classList.remove("header-hide");
+  progressBarStore.primaryBackground()
+};
+
+const hideHeader = () => {
+  header.value.classList.add("header-hide");
+  header.value.classList.remove("header-show");
+  progressBarStore.accentBackground()
+};
 </script>
 
 <style scoped lang="scss">
 h1 {
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
-
   span {
-    -webkit-text-stroke-width: 0px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(40 42 54);
   }
 }
 

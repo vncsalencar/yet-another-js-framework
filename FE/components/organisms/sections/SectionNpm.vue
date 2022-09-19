@@ -1,7 +1,7 @@
 <template>
   <Section bg-secondary>
     <template v-slot:title>
-      TRENDING ON NPM 
+      TRENDING ON <span class="text-accent">NPM</span> 
     </template>
     <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <CardNpm

@@ -1,5 +1,8 @@
 <template>
   <Section >
+    <template v-slot:title>
+      <span class="text-accent">Content</span> we liked 
+    </template>
     <ul v-if="pending">
       <SkeletonCardContet v-for="i in 3"></SkeletonCardContet>
     </ul>

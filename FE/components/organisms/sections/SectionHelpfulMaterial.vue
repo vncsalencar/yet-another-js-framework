@@ -1,5 +1,8 @@
 <template>
   <Section>
+    <template v-slot:title>
+      Helpful <span class="text-accent">Material</span> 
+    </template>
     <div class="flex flex-col gap-4">
       <CardHelpfulMaterial
         v-for="material of materialList.data"

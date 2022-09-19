@@ -13,7 +13,7 @@
           </small>
         </p>
         <h3
-          class="mb-1 cursor-pointer transition line-clamp-2 md:line-clamp-1 duration-300 group-hover:text-accent"
+          class="mb-1 cursor-pointer  line-clamp-2 md:line-clamp-1 group-hover-text-accent"
         >
           {{ content.title }}
         </h3>
