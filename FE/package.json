@@ -20,6 +20,7 @@
     "vitest": "^0.23.1"
   },
   "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.2",
     "@pinia/nuxt": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@vitejs/plugin-vue": "^3.1.0",
@@ -28,6 +29,7 @@
     "focus-trap-vue": "^3.3.1",
     "jsdom": "^20.0.0",
     "pinia": "^2.0.22",
-    "sass": "^1.54.7"
+    "sass": "^1.54.7",
+    "vue3-highlightjs": "^1.0.5"
   }
 }

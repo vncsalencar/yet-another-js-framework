@@ -29,10 +29,10 @@ export default defineNuxtConfig({
     },
     vite: {
         plugins: [
-          Icons({
-            // the feature below is experimental ⬇️
-            autoInstall: true
-          })
+            Icons({
+                // the feature below is experimental ⬇️
+                autoInstall: true
+            })
         ]
-      }
+    }
 })

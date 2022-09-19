@@ -2,7 +2,7 @@
   <button
     ref="btnAnswer"
     @click="checkAnswer"
-    class="p-4 w-100 text-white border-solid border-2 border-white hover-text-accent hover-border-accent"
+    class="p-4 text-white border-solid border-2 border-white hover-text-accent hover-border-accent"
   >
     {{ text }}
   </button>
@@ -23,7 +23,6 @@ const emit = defineEmits<{
 const checkAnswer = () => {
   if (props.isCorrect) {
     console.log("acertou");
-    return;
   }
   console.log("errou");
 
