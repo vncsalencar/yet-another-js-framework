@@ -1,25 +1,29 @@
 <template>
   <Section bg-secondary>
     <template v-slot:title>
-      TRENDING ON <span class="text-accent">NPM</span> 
+      TRENDING ON <span class="text-accent">NPM</span>...
     </template>
     <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <CardNpm
         v-for="framework in npmPackages"
         :featured-framework="framework"
       ></CardNpm>
-
-      <!-- <FeatureNpmCardSkeleton
-        v-if="loading"
-        v-for="i in 3"
-      ></FeatureNpmCardSkeleton> -->
+    </ul>
+    <h2 class="mt-8 mb-4 text-center uppercase">
+      ...AND <span class="text-accent">GITHUB</span>
+    </h2>
+    <ul
+      class="flex flex-col gap-4"
+    >
+      <CardGithub></CardGithub>
+      <CardGithub></CardGithub>
+      <CardGithub></CardGithub>
     </ul>
   </Section>
 </template>
 
 <script setup lang="ts">
 import { Ref } from "vue";
-
 
 const npmPackages: Ref<NpmPackage[]> = ref([
   {

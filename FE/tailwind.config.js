@@ -12,7 +12,8 @@ module.exports = {
     extend: {},
     fontFamily: {
       'primary': 'RobotoMono',
-      'secondary': 'Anton'
+      'secondary': 'HussarBoldWeb',
+      'title': 'Anton'
     },
       colors: {
         transparent: 'transparent',

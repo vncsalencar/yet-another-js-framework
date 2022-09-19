@@ -1,11 +1,11 @@
 <template>
-  <ul class="flex flex-col gap-4 text-center text-white">
+  <ul class="flex flex-col items-center gap-2 text-white">
     <li
-      class="hover:scale-125 transition-all duration-300"
+      class="group p-2 transition-all duration-300 ease-in-out hover:bg-left-bottom"
       v-for="item of listItems"
     >
       <button
-        class="text-2xl md:text-3xl font-secondary hover:text-accent"
+        class="text-2xl md:text-3xl font-secondary transition-all duration-300 linear group-hover:text-primary "
         @click="emit('changeSection', item.sectionId)"
       >
         {{ item.name }}
@@ -26,3 +26,18 @@ const emit = defineEmits<{
   (e: "changeSection", sectionId: SectionIds): void;
 }>();
 </script>
+
+<style scoped lang="scss">
+@keyframes menu-item-hover {
+  0% {
+  }
+  100% {
+  }
+}
+
+li {
+  background: linear-gradient(to right, #f0db4f 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: bottom right;
+}
+</style>

@@ -1,14 +1,16 @@
 @font-face {
   font-family: "Anton";
-  src: local("Anton"),
-    url(../fonts/Anton.ttf) format("truetype");
+  src: local("Anton"), url(../fonts/Anton.ttf) format("truetype");
 }
-
 
 @font-face {
   font-family: "RobotoMono";
-  src: local("RobotoMono"),
-    url(../fonts/RobotoMono.ttf) format("truetype");
+  src: local("RobotoMono"), url(../fonts/RobotoMono.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "HussarBoldWeb";
+  src: local("HussarBoldWeb"), url(../fonts/HussarBoldWeb.woff) format("woff");
 }
 
 @tailwind base;
@@ -17,11 +19,11 @@
 
 @layer base {
   body {
-    @apply bg-primary font-primary;
+    @apply font-primary bg-primary;
   }
 
-  h1{
-    @apply font-secondary text-5xl
+  h1 {
+    @apply font-title text-5xl;
   }
 
   h2 {

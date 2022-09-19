@@ -39,16 +39,16 @@ watch(active, (newActive, oldActive) => {
 });
 
 onMounted(() => {
-  window.addEventListener("scroll", () => {
-    let currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll) {
-      hideHeader();
-    } else {
-      showHeader();
-    }
+  // window.addEventListener("scroll", () => {
+  //   let currentScroll = window.pageYOffset;
+  //   if (currentScroll > lastScroll) {
+  //     hideHeader();
+  //   } else {
+  //     showHeader();
+  //   }
 
-    lastScroll = currentScroll;
-  });
+  //   lastScroll = currentScroll;
+  // });
 });
 
 const showHeader = () => {
@@ -67,7 +67,7 @@ const hideHeader = () => {
 <style scoped lang="scss">
 h1 {
   span {
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 2.5px;
     -webkit-text-stroke-color: rgb(40 42 54);
   }
 }

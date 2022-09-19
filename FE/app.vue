@@ -3,7 +3,7 @@
   <ProgressScrollBar></ProgressScrollBar>
   <Container>
     <Header id="header"></Header>
-    <SectionNpm id="feature"></SectionNpm>
+    <SectionTrending id="trending"></SectionTrending>
     <SectionContent id="content"></SectionContent>
     <SectionQuestion id="question"></SectionQuestion>
     <!-- <SectionTwitter id="twitter"></SectionTwitter> -->
@@ -39,12 +39,7 @@ const toggleMenuOnEsc = () => {
 };
 
 const scrollTo = (sectionId: SectionIds) => {
-  if (sectionId == "home") {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
-
-  const position = document.getElementById(sectionId).offsetTop - 16;
+  const position = document.getElementById(sectionId).offsetTop - 32;
   window.scrollTo({ top: position, behavior: "smooth" });
 };
 </script>

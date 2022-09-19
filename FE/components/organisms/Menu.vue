@@ -33,12 +33,12 @@ const changeSection = (sectionId: SectionIds) => {
 };
 
 const listItems = [
-  { name: "Home", sectionId: "home" as SectionIds },
-  { name: "Trending on NPM", sectionId: "feature" as SectionIds },
+  { name: "Trending on NPM and Github", sectionId: "trending" as SectionIds },
   { name: "Content we liked", sectionId: "content" as SectionIds },
-  { name: "Twitter", sectionId: "twitter" as SectionIds },
-  { name: "Tiktok", sectionId: "tiktok" as SectionIds },
-  { name: "Reddit", sectionId: "reddit" as SectionIds },
+  { name: "Question of the day", sectionId: "question" as SectionIds },
+  // { name: "Twitter", sectionId: "twitter" as SectionIds },
+  // { name: "Tiktok", sectionId: "tiktok" as SectionIds },
+  // { name: "Reddit", sectionId: "reddit" as SectionIds },
   { name: "Helpful Material", sectionId: "helpful" as SectionIds },
   { name: "About this project", sectionId: "about" as SectionIds },
 ];
