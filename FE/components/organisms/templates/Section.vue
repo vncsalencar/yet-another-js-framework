@@ -4,7 +4,7 @@
     :class="{ 'bg-secondary': bgSecondary }"
   >
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="text-2xl mb-4 text-center uppercase">{{ title }}</h2>
+      <h2 class="mb-4 text-center uppercase">{{ title }}</h2>
       <slot></slot>
     </div>
   </section>

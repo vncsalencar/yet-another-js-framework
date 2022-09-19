@@ -1,11 +1,11 @@
 <template>
   <li>
   <a
-    class="block w-full mx-auto border-solid p-2 border-2 border-white transition duration-300 hover:border-[#f0db4f]"
+    class="block w-full mx-auto border-solid p-2 border-2 border-white hover-border-accent group"
     href="#"
     target="_blank"
   >
-    <h3 class="text-xl">{{ featuredFramework.title }}</h3>
+    <h3 class="group-hover-text-accent">{{ featuredFramework.title }}</h3>
     <p class="line-clamp-2">{{ featuredFramework.description }}</p>
     <div class="flex flex-row items-center gap-2">
       <p>{{ featuredFramework.version }}</p>

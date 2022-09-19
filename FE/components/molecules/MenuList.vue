@@ -1,7 +1,7 @@
 <template>
   <ul class="flex flex-col gap-4 text-center text-white">
     <li
-      class="hover:scale-125 transition-all duration-250"
+      class="hover:scale-125 transition-all duration-300"
       v-for="item of listItems"
     >
       <button

@@ -1,3 +1,50 @@
+@font-face {
+  font-family: "SpaceMono";
+  src: local("SpaceMono"),
+    url(../fonts/SpaceMono-Regular.ttf) format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary font-primary;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  b,
+  small {
+    @apply text-white;
+  }
+}
+
+@layer utilities {
+  .hover-text-accent {
+    @apply hover:text-accent hover-duration;
+  }
+
+  .hover-border-accent {
+    @apply hover:border-accent hover-duration;
+  }
+
+  .group-hover-text-accent {
+    @apply group-hover:text-accent hover-duration;
+  }
+
+  .hover-duration {
+    @apply transition-all ease-linear duration-300;
+  }
+}

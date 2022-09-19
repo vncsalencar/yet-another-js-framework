@@ -6,7 +6,6 @@ export default defineNuxtConfig({
         '@pinia/nuxt'
     ],
     css: [
-        '@/assets/scss/main.scss',
         '@/assets/scss/tailwind.scss',
     ],
     build: {

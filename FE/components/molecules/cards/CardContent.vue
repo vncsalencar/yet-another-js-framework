@@ -8,10 +8,12 @@
       <div>
         <small class="text-accent">{{ content.contentType }}</small>
         <p>
-          <b class="mb-2">{{ content.author }}</b>
+          <small>
+            <b class="mb-2">{{ content.author }}</b>
+          </small>
         </p>
         <h3
-          class="text-xl mb-1 cursor-pointer transition line-clamp-2 md:line-clamp-1 duration-300 group-hover:text-accent"
+          class="mb-1 cursor-pointer transition line-clamp-2 md:line-clamp-1 duration-300 group-hover:text-accent"
         >
           {{ content.title }}
         </h3>
