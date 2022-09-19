@@ -3,7 +3,6 @@
   <ProgressScrollBar></ProgressScrollBar>
   <Container>
     <Header id="header"></Header>
-
     <SectionNpm id="feature"></SectionNpm>
     <SectionContent id="content"></SectionContent>
     <SectionQuestion id="question"></SectionQuestion>

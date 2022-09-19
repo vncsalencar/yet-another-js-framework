@@ -5,7 +5,7 @@
       v-for="item of listItems"
     >
       <button
-        class="text-2xl md:text-3xl hover:text-accent"
+        class="text-2xl md:text-3xl font-secondary hover:text-accent"
         @click="emit('changeSection', item.sectionId)"
       >
         {{ item.name }}

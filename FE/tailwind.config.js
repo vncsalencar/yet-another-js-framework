@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'primary': 'SpaceMono',
+      'primary': 'RobotoMono',
+      'secondary': 'Anton'
     },
       colors: {
         transparent: 'transparent',

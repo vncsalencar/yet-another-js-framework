@@ -1,5 +1,8 @@
 <template>
-  <Section title="🔥 Trending on NPM" bg-secondary>
+  <Section bg-secondary>
+    <template v-slot:title>
+      TRENDING ON NPM 
+    </template>
     <ul class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <CardNpm
         v-for="framework in npmPackages"
@@ -16,6 +19,7 @@
 
 <script setup lang="ts">
 import { Ref } from "vue";
+
 
 const npmPackages: Ref<NpmPackage[]> = ref([
   {

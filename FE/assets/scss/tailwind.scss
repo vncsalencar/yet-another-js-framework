@@ -1,7 +1,14 @@
 @font-face {
-  font-family: "SpaceMono";
-  src: local("SpaceMono"),
-    url(../fonts/SpaceMono-Regular.ttf) format("truetype");
+  font-family: "Anton";
+  src: local("Anton"),
+    url(../fonts/Anton.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "RobotoMono";
+  src: local("RobotoMono"),
+    url(../fonts/RobotoMono.ttf) format("truetype");
 }
 
 @tailwind base;
@@ -13,8 +20,12 @@
     @apply bg-primary font-primary;
   }
 
+  h1{
+    @apply font-secondary text-5xl
+  }
+
   h2 {
-    @apply text-xl;
+    @apply font-secondary text-2xl;
   }
 
   h3 {

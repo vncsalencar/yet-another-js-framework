@@ -1,5 +1,5 @@
 <template>
-  <Section title="🎵 Tiktok">
+  <Section>
     <div class="flex flex-col lg:flex-row justify-center items-center lg:gap-4">
       <CardTiktok :tiktok-html="data"></CardTiktok>
       <CardTiktok :tiktok-html="data"></CardTiktok>

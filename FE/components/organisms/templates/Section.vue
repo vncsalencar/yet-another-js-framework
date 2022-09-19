@@ -4,7 +4,9 @@
     :class="{ 'bg-secondary': bgSecondary }"
   >
     <div class="max-w-[1200px] mx-auto">
-      <h2 class="mb-4 text-center uppercase">{{ title }}</h2>
+      <h2 class="mb-4 text-center uppercase">
+        <slot name="title"></slot>
+      </h2>
       <slot></slot>
     </div>
   </section>
@@ -12,7 +14,6 @@
 
 <script setup lang="ts">
 defineProps<{
-  title: string;
   bgSecondary?: boolean;
 }>();
 </script>

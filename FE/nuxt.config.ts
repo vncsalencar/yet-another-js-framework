@@ -1,9 +1,11 @@
 import { defineNuxtConfig } from 'nuxt'
+import Icons from 'unplugin-icons/vite'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     buildModules: [
-        '@pinia/nuxt'
+        '@pinia/nuxt',
+        'unplugin-icons/nuxt',
     ],
     css: [
         '@/assets/scss/tailwind.scss',
@@ -24,5 +26,13 @@ export default defineNuxtConfig({
             CMS: process.env.CMS,
             API: process.env.API
         }
-    }
+    },
+    vite: {
+        plugins: [
+          Icons({
+            // the feature below is experimental ⬇️
+            autoInstall: true
+          })
+        ]
+      }
 })

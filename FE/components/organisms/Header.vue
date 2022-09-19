@@ -6,10 +6,10 @@
   >
     <div class="flex justify-between items-center px-4 max-w-[1200px] mx-auto">
       <div>
-        <h1 class="text-4xl hidden lg:block">
+        <h1 class="text-primary hidden lg:block">
           YET ANOTHER <span class="text-[#f0db4f]">JS</span> FRAMEWORK...
         </h1>
-        <h1 class="text-3xl block lg:hidden">
+        <h1 class="text-primary text-4xl block lg:hidden">
           YA<span class="text-[#f0db4f]">JS</span>F...
         </h1>
         <p class="hidden lg:block">Making sense of the Frontend world</p>
@@ -28,30 +28,39 @@ const { active } = storeToRefs(menuStore);
 const header = ref(null);
 let lastScroll = 0;
 
-watch(active, (newActive, oldActive) => {
-  if (newActive != oldActive) {
-    header.value.classList.add("header-show");
-    header.value.classList.remove("header-hide");
-  }
-});
+// watch(active, (newActive, oldActive) => {
+//   if (newActive != oldActive) {
+//     header.value.classList.add("header-show");
+//     header.value.classList.remove("header-hide");
+//   }
+// });
 
-onMounted(() => {
-  window.addEventListener("scroll", () => {
-    let currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll) {
-      header.value.classList.add("header-hide");
-      header.value.classList.remove("header-show");
-    } else {
-      header.value.classList.add("header-show");
-      header.value.classList.remove("header-hide");
-    }
+// onMounted(() => {
+//   window.addEventListener("scroll", () => {
+//     let currentScroll = window.pageYOffset;
+//     if (currentScroll > lastScroll) {
+//       header.value.classList.add("header-hide");
+//       header.value.classList.remove("header-show");
+//     } else {
+//       header.value.classList.add("header-show");
+//       header.value.classList.remove("header-hide");
+//     }
 
-    lastScroll = currentScroll;
-  });
-});
+//     lastScroll = currentScroll;
+//   });
+// });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+h1 {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+
+  span {
+    -webkit-text-stroke-width: 0px;
+  }
+}
+
 #header {
   transition: translate 0.2s linear;
 }

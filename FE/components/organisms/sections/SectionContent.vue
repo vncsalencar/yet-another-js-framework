@@ -1,5 +1,5 @@
 <template>
-  <Section title="📚 Content we liked">
+  <Section >
     <ul v-if="pending">
       <SkeletonCardContet v-for="i in 3"></SkeletonCardContet>
     </ul>

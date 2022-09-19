@@ -1,5 +1,5 @@
 <template>
-  <Section title="Question of the day" bg-secondary class="flex justify-center">
+  <Section bg-secondary class="flex justify-center">
     <p class="my-6 text-center"><code>teste()</code>Which is the best?</p>
     <div class="flex flex-col gap-4">
       <BtnAnswer text="Angular"></BtnAnswer>

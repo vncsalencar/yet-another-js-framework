@@ -1,5 +1,5 @@
 <template>
-  <Section title="🎓 Helpful Material">
+  <Section>
     <div class="flex flex-col gap-4">
       <CardHelpfulMaterial
         v-for="material of materialList.data"
