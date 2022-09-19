@@ -3,11 +3,11 @@
     <template v-slot:title>
       <span class="text-accent">Content</span> we liked 
     </template>
-    <ul v-if="pending">
+    <ul class="border-t-2 border-white border-solid" v-if="pending">
       <SkeletonCardContet v-for="i in 3"></SkeletonCardContet>
     </ul>
 
-    <ul v-else>
+    <ul class="border-t-2 border-white border-solid" v-else>
       <CardContent
         v-for="content of contentList.data"
         :content="content"

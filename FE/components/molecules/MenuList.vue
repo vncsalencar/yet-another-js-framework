@@ -1,5 +1,5 @@
 <template>
-  <ul class="flex flex-col items-center gap-2 text-white">
+  <ul class="flex flex-col items-center gap-4 text-white">
     <li
       class="group p-2 transition-all duration-300 ease-in-out hover:bg-left-bottom"
       v-for="item of listItems"

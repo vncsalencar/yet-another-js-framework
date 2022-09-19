@@ -1,7 +1,7 @@
 <template>
   <li>
     <a
-      class="group flex flex-col gap-2 w-full mx-auto px-2 pt-0 pb-4 border-solid border-b-2 border-white "
+      class="group flex flex-col gap-2 w-full mx-auto p-4 border-solid border-2 border-white hover-border-accent"
       href="#"
       target="_blank"
     >

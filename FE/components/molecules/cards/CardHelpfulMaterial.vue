@@ -1,6 +1,6 @@
 <template>
   <details
-    class="p-2 border-2 border-solid text-white border-white hover-border-accent group"
+    class="p-4 border-2 border-solid text-white border-white hover-border-accent group"
   >
     <summary
       class="cursor-pointer group-hover-text-accent focus-visible:outline-none"
