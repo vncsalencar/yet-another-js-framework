@@ -73,7 +73,7 @@ h1 {
 }
 
 #header {
-  transition: translate 0.2s linear;
+  transition: translate 0.3s linear;
 }
 
 .header-hide {
