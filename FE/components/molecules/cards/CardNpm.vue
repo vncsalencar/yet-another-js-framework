@@ -1,7 +1,7 @@
 <template>
   <li>
   <a
-    class="group block w-full mx-auto border-solid p-4 border-2 border-white hover-border-accent"
+    class="group block w-full mx-auto p-4 bg-primary"
     href="#"
     target="_blank"
   >

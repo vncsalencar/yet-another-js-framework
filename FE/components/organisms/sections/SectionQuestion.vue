@@ -4,19 +4,17 @@
       <span class="text-accent">Question</span> of the day
     </template>
     <div class="flex flex-col gap-6">
-
       <div>
         <pre v-highlightjs><code class="javascript">function sayHi() {
   console.log(name);
   console.log(age);
   var name = 'Lydia';
   let age = 21;
-  }
+}
 sayHi();</code></pre>
       </div>
 
       <h3>What's the output?</h3>
-
 
       <div class="flex flex-col gap-4">
         <BtnAnswer
@@ -31,8 +29,8 @@ sayHi();</code></pre>
         ></BtnAnswer>
       </div>
 
-      <div v-show="questionAnswered" class="bg-primary p-4">
-        <h3 >Explanation</h3>
+      <details v-show="questionAnswered" class="group bg-primary p-4">
+        <summary class="group-hover-text-accent">Explanation</summary>
         <p>
           Within the function, we first declare the name variable with the var
           keyword. This means that the variable gets hoisted (memory space is
@@ -46,7 +44,7 @@ sayHi();</code></pre>
           try to access the variables before they are declared, JavaScript
           throws a ReferenceError.
         </p>
-      </div>
+      </details>
     </div>
   </Section>
 </template>

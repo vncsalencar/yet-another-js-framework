@@ -13,7 +13,7 @@
           YA<span class="text-white">JS</span>F...
         </h1>
         <p class="hidden md:block">
-          <b class="text-primary ">Making sense of the Frontend world</b>
+          <b class="text-primary">Making sense of the Frontend world</b>
         </p>
       </div>
       <BtnHamburger></BtnHamburger>
@@ -46,7 +46,6 @@ onMounted(() => {
   //   } else {
   //     showHeader();
   //   }
-
   //   lastScroll = currentScroll;
   // });
 });
@@ -54,21 +53,25 @@ onMounted(() => {
 const showHeader = () => {
   header.value.classList.add("header-show");
   header.value.classList.remove("header-hide");
-  progressBarStore.primaryBackground()
+  progressBarStore.primaryBackground();
 };
 
 const hideHeader = () => {
   header.value.classList.add("header-hide");
   header.value.classList.remove("header-show");
-  progressBarStore.accentBackground()
+  progressBarStore.accentBackground();
 };
 </script>
 
 <style scoped lang="scss">
 h1 {
   span {
-    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: rgb(40 42 54);
+
+    @media (min-width: 768px) {
+    -webkit-text-stroke-width: 2.5px;
+    }
   }
 }
 

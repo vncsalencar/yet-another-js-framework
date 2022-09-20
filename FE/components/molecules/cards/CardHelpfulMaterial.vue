@@ -1,9 +1,9 @@
 <template>
   <details
-    class="p-4 border-2 border-solid text-white border-white hover-border-accent group"
+    class="group p-4  text-white bg-secondary"
   >
     <summary
-      class="cursor-pointer group-hover-text-accent focus-visible:outline-none"
+      class="group-hover-text-accent"
     >
       {{ helpfulMaterial.title }}
     </summary>

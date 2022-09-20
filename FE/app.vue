@@ -21,6 +21,9 @@ const store = useMenuStore();
 
 useHead({
   title: "Yet another Javascript framework",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  charset: "utf-8",
+  link: [{ rel: "shortcut icon", type: "image/x-icon", href: "/public/favicon.ico" }],
   htmlAttrs: {
     lang: "en",
   },
