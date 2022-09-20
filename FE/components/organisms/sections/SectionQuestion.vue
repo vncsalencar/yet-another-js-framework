@@ -21,10 +21,11 @@ sayHi();</code></pre>
           @answer-selected="checkAnswer"
           v-for="answer of answers"
           :text="answer.text"
-          :is-correct="answer.isCorrect"
+          :correct="answer.correct"
+          :question-answered="questionAnswered"
           :class="{
-            'border-[#00ff00]': questionAnswered && answer.isCorrect,
-            'border-[#ff0000]': questionAnswered && !answer.isCorrect,
+            'border-[#00ff00]': questionAnswered && answer.correct,
+            'border-[#ff0000]': questionAnswered && !answer.correct,
           }"
         ></BtnAnswer>
       </div>
@@ -51,14 +52,40 @@ sayHi();</code></pre>
 
 <script setup lang="ts">
 const questionAnswered = ref(false);
+const questionId = "1";
+let answeredQuestions: AnsweredQuestion[] = [];
 const answers = [
-  { text: "Lydia and undefined", isCorrect: false },
-  { text: "Lydia and ReferenceError", isCorrect: false },
-  { text: "ReferenceError and 21", isCorrect: false },
-  { text: "undefined and ReferenceError", isCorrect: true },
+  { text: "Lydia and undefined", correct: false },
+  { text: "Lydia and ReferenceError", correct: false },
+  { text: "ReferenceError and 21", correct: false },
+  { text: "undefined and ReferenceError", correct: true },
 ];
 
-const checkAnswer = () => {
+onMounted(() => {
+  checkQuestionPrevAnswered();
+});
+
+const checkQuestionPrevAnswered = () => {
+  let localStorageQuestions = localStorage.getItem("questions");
+  if (localStorageQuestions) {
+    answeredQuestions = JSON.parse(localStorageQuestions);
+    let questionFound = answeredQuestions.find((q) => q.id == questionId);
+
+    if (questionFound) {
+      questionAnswered.value = true;
+    }
+    return;
+  }
+
+  localStorage.setItem("questions", JSON.stringify([]));
+};
+
+const checkAnswer = (isAnswerCorrect: boolean) => {
+  answeredQuestions.push({
+    id: questionId,
+    correct: isAnswerCorrect,
+  });
+  localStorage.setItem("questions", JSON.stringify(answeredQuestions));
   questionAnswered.value = true;
 };
 </script>

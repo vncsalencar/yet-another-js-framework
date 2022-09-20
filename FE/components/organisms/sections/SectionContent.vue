@@ -1,7 +1,7 @@
 <template>
-  <Section >
+  <Section>
     <template v-slot:title>
-      <span class="text-accent">Content</span> we liked 
+      <span class="text-accent">Content</span> we liked
     </template>
     <ul class="border-t-2 border-white border-solid" v-if="pending">
       <SkeletonCardContet v-for="i in 3"></SkeletonCardContet>
@@ -36,9 +36,7 @@ const activePage = ref(1);
 const pageCount = ref(0);
 const maxPages = ref(5);
 
-const { data: contentList, pending } = await useFetch<Page<Content>>(URL, {
-  initialCache: false,
-});
+const { data: contentList, pending } = await useFetch<Page<Content>>(URL);
 pageCount.value = contentList.value.meta.pagination.pageCount;
 
 const pageChange = async (newPage: number) => {
@@ -50,9 +48,5 @@ const pageChange = async (newPage: number) => {
     },
   });
   pending.value = false;
-  //TODO: find a way to check if render is finished instead of timeout()
-  setTimeout(() => {
-    store.calculatePageHeight();
-  }, 500);
 };
 </script>

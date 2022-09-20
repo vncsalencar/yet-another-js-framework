@@ -1,8 +1,10 @@
 <template>
   <button
+    :disabled="questionAnswered"
     ref="btnAnswer"
     @click="checkAnswer"
-    class="p-4 text-white border-solid border-2 border-white hover-text-accent hover-border-accent"
+    class="p-4 text-white border-solid border-2 border-white"
+    :class="{ 'hover-text-accent hover-border-accent': !questionAnswered }"
   >
     {{ text }}
   </button>
@@ -13,20 +15,21 @@ const btnAnswer = ref(null);
 
 const props = defineProps<{
   text: string;
-  isCorrect: boolean;
+  correct: boolean;
+  questionAnswered: boolean;
 }>();
 
 const emit = defineEmits<{
-  (e: "answerSelected"): void;
+  (e: "answerSelected", correct: boolean): void;
 }>();
 
 const checkAnswer = () => {
-  if (props.isCorrect) {
+  if (props.correct) {
     console.log("acertou");
   }
   console.log("errou");
 
-  emit("answerSelected");
+  emit("answerSelected", props.correct);
 };
 </script>
 

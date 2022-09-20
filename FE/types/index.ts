@@ -41,6 +41,11 @@ declare global {
         }[],
     }
 
+    interface AnsweredQuestion {
+        id: string,
+        correct: boolean
+    }
+
 
     type SectionIds =
         "home" |

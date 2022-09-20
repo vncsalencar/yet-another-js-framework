@@ -16,6 +16,11 @@
 import CardHelpfulMaterial from '~~/components/molecules/cards/CardHelpfulMaterial.vue';
 const config = useRuntimeConfig();
 const { data: materialList, pending } = await useFetch<Page<HelpfulMaterial>>(
-  `${config.CMS}/helpful`
+  `${config.CMS}/helpful`,
+  {
+    params:{
+      page_size: 5
+    }
+  }
 );
 </script>
