@@ -55,7 +55,7 @@ const thumbnail = computed(() => {
   if (props.content.contentType == ContentType.Project) {
     return {
       alt: "Github",
-      url: "/assets/images/logo-github.png",
+      url: "/images/logo-github.png",
     };
   }
 
@@ -74,15 +74,15 @@ const getYoutubeThumbnail = (): string => {
 
 const getArticleThumbnail = (): string => {
   if (tags.value.includes("javascript")) {
-    return "/assets/images/logo-js.png";
+    return "/images/logo-js.png";
   }
 
   if (tags.value.includes("html")) {
-    return "/assets/images/logo-html.png";
+    return "/images/logo-html.png";
   }
 
   if (tags.value.includes("css")) {
-    return "/assets/images/logo-css.png";
+    return "/images/logo-css.png";
   }
 };
 </script>
