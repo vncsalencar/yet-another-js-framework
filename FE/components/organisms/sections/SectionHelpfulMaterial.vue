@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <Section bg-secondary>
     <template v-slot:title>
       Helpful <span class="text-accent">Material</span> 
     </template>

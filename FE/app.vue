@@ -6,9 +6,7 @@
     <SectionTrending id="trending"></SectionTrending>
     <SectionContent id="content"></SectionContent>
     <SectionQuestion id="question"></SectionQuestion>
-    <!-- <SectionTwitter id="twitter"></SectionTwitter> -->
-    <!-- <SectionTiktok id="tiktok"></SectionTiktok> -->
-    <!-- <SectionReddit id="reddit"></SectionReddit> -->
+    <SectionSocials id="socials"></SectionSocials>
     <SectionHelpfulMaterial id="helpful"></SectionHelpfulMaterial>
     <SectionAbout id="about"></SectionAbout>
   </Container>
@@ -23,7 +21,9 @@ useHead({
   title: "Yet another Javascript framework",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   charset: "utf-8",
-  link: [{ rel: "shortcut icon", type: "image/x-icon", href: "/public/favicon.ico" }],
+  link: [
+    { rel: "shortcut icon", type: "image/x-icon", href: "/public/favicon.ico" },
+  ],
   htmlAttrs: {
     lang: "en",
   },

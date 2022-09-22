@@ -1,11 +1,9 @@
 <template>
-  <Section>
-    <div class="flex flex-col lg:flex-row justify-center items-center lg:gap-4">
-      <CardTiktok :tiktok-html="data"></CardTiktok>
-      <CardTiktok :tiktok-html="data"></CardTiktok>
-      <CardTiktok :tiktok-html="data"></CardTiktok>
-    </div>
-  </Section>
+  <div class="flex flex-col lg:flex-row justify-center items-center lg:gap-4">
+    <CardTiktok :tiktok-html="data"></CardTiktok>
+    <CardTiktok :tiktok-html="data"></CardTiktok>
+    <CardTiktok :tiktok-html="data"></CardTiktok>
+  </div>
 </template>
 
 <script setup lang="ts">

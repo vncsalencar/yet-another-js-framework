@@ -1,5 +1,5 @@
 <template>
-  <Section bg-secondary>
+  <Section>
     <template v-slot:title>
       <span class="text-accent">About</span> this project
     </template>

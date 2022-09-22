@@ -1,6 +1,6 @@
 <template>
   <details
-    class="group p-4  text-white bg-secondary"
+    class="group p-4  text-white bg-primary"
   >
     <summary
       class="group-hover-text-accent"
