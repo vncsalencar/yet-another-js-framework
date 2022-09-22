@@ -1,34 +1,26 @@
 <template>
   <ul class="flex justify-end gap-2">
     <li>
-      <button
-        aria-label="Previous page"
-        class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
-        @click="changePage(-1, true)"
+      <BtnPage
+        previous
+        @page-change="changePage"
         v-show="activePage > 1"
-      >
-        &lt
-      </button>
+      ></BtnPage>
     </li>
-
     <li>
       <BtnPage
         v-for="i of range"
         :page-number="i"
-        @page-change="changePage(i)"
+        @page-change="changePage"
         :active="i == activePage"
       ></BtnPage>
     </li>
-
     <li>
-      <button
-        aria-label="Next page"
-        class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
-        @click="changePage(1, true)"
+      <BtnPage
+        next
+        @page-change="changePage"
         v-show="activePage < pageCount"
-      >
-        &gt
-      </button>
+      ></BtnPage>
     </li>
   </ul>
 </template>
@@ -72,10 +64,11 @@ const firstPage = computed(() => {
   return 1;
 });
 
-const changePage = (pageClicked?: number, increment: boolean = false) => {
-  increment
-    ? (activePage.value += pageClicked)
-    : (activePage.value = pageClicked);
+const changePage = (payload: ChangePagePayload) => {
+  if (payload.nextPage) activePage.value = ++activePage.value;
+  if (payload.previousPage) activePage.value = --activePage.value;
+  if (payload.pageClicked) activePage.value = payload.pageClicked;
+
   emit("pageChange", activePage.value);
 };
 </script>

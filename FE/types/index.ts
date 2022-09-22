@@ -33,6 +33,12 @@ declare global {
         link: string,
     }
 
+    interface ChangePagePayload {
+        pageClicked?: number;
+        nextPage?: boolean;
+        previousPage?: boolean
+    }
+
     interface HelpfulMaterial {
         title: string,
         materials: {
