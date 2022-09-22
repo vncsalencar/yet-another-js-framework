@@ -24,9 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { useScrollProgressStore } from "~/stores/scrollProgressStore";
-
-const store = useScrollProgressStore();
 const config = useRuntimeConfig();
 const URL = `${config.CMS}/liked`;
 const activePage = ref(1);

@@ -52,6 +52,20 @@
   }
 }
 
+@layer components {
+  .btn-primary {
+    @apply text-xl text-white bg-secondary border-white border-2 border-solid cursor-pointer;
+
+    &:hover:not([disabled]) {
+      @apply hover-text-accent hover-border-accent hover:bg-primary;
+    }
+
+    &:disabled {
+      @apply outline-none;
+    }
+  }
+}
+
 @layer utilities {
   .hover-text-accent {
     @apply lg:hover:text-accent hover-duration;

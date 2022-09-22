@@ -22,8 +22,9 @@ module.exports = {
         'gray': '#44475a',
         'primary': '#282a36',
         'secondary': '#20222b',
-        'accent': '#f0db4f'
-        
+        'accent': '#f0db4f',
+        'green': '#93c961',
+        'red': '#be5944',
       },
   },
   plugins: [

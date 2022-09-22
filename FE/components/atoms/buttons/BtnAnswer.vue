@@ -2,15 +2,13 @@
   <button
     :disabled="questionAnswered"
     @click="checkAnswer"
-    class="p-4 text-white border-solid border-2 border-white"
-    :class="{ 'hover-text-accent hover-border-accent': !questionAnswered }"
+    class="p-4 btn-primary"
   >
     {{ text }}
   </button>
 </template>
 
 <script setup lang="ts">
-
 const props = defineProps<{
   text: string;
   correct: boolean;

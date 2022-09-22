@@ -24,8 +24,8 @@ sayHi();</code></pre>
           :correct="answer.correct"
           :question-answered="questionAnswered"
           :class="{
-            'border-[#00ff00]': questionAnswered && answer.correct,
-            'border-[#ff0000]': questionAnswered && !answer.correct,
+            'border-green': questionAnswered && answer.correct,
+            'border-red': questionAnswered && !answer.correct,
           }"
         ></BtnAnswer>
       </div>
@@ -68,7 +68,7 @@ const answers = [
 ];
 
 onMounted(() => {
-  checkQuestionPrevAnswered();
+  // checkQuestionPrevAnswered();
 });
 
 const checkQuestionPrevAnswered = () => {
