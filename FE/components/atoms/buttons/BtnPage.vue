@@ -1,6 +1,6 @@
 <template>
   <button
-    class="w-8 h-8 border-solid border-2 border-white text-white hover:text-accent"
+    class="w-8 h-8 border-solid border-2 border-white text-white hover-text-accent"
     :class="{ 'bg-gray': active }"
     @click="pageChanged()"
   >

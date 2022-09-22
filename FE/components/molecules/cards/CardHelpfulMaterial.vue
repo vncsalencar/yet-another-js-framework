@@ -27,3 +27,7 @@ defineProps<{
   helpfulMaterial: HelpfulMaterial;
 }>();
 </script>
+
+<style scoped lang="scss">
+
+</style>

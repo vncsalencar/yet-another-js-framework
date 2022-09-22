@@ -31,7 +31,7 @@
   }
 
   h3 {
-    @apply font-secondary text-lg ;
+    @apply font-secondary text-lg;
   }
 
   h1,
@@ -43,22 +43,26 @@
     @apply text-white;
   }
 
-  summary{
-    @apply font-secondary text-lg text-white cursor-pointer
+  summary {
+    @apply font-secondary text-lg text-white cursor-pointer;
+  }
+
+  details[open] summary {
+    @apply text-accent;
   }
 }
 
 @layer utilities {
   .hover-text-accent {
-    @apply hover:text-accent hover-duration;
+    @apply lg:hover:text-accent hover-duration;
   }
 
   .hover-border-accent {
-    @apply hover:border-accent hover-duration;
+    @apply lg:hover:border-accent hover-duration;
   }
 
   .group-hover-text-accent {
-    @apply group-hover:text-accent hover-duration;
+    @apply lg:group-hover:text-accent hover-duration;
   }
 
   .hover-duration {

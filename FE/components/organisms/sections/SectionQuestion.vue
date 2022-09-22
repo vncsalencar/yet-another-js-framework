@@ -30,7 +30,11 @@ sayHi();</code></pre>
         ></BtnAnswer>
       </div>
 
-      <details v-show="questionAnswered" class="group bg-primary p-4">
+      <details
+        ref="explanation"
+        v-show="questionAnswered"
+        class="group bg-primary p-4"
+      >
         <summary class="group-hover-text-accent">Explanation</summary>
         <p>
           Within the function, we first declare the name variable with the var
@@ -52,8 +56,10 @@ sayHi();</code></pre>
 
 <script setup lang="ts">
 const questionAnswered = ref(false);
+const answeredQuestions = ref([]);
+const explanation = ref(null);
+
 const questionId = "1";
-let answeredQuestions: AnsweredQuestion[] = [];
 const answers = [
   { text: "Lydia and undefined", correct: false },
   { text: "Lydia and ReferenceError", correct: false },
@@ -68,8 +74,8 @@ onMounted(() => {
 const checkQuestionPrevAnswered = () => {
   let localStorageQuestions = localStorage.getItem("questions");
   if (localStorageQuestions) {
-    answeredQuestions = JSON.parse(localStorageQuestions);
-    let questionFound = answeredQuestions.find((q) => q.id == questionId);
+    answeredQuestions.value = JSON.parse(localStorageQuestions);
+    let questionFound = answeredQuestions.value.find((q) => q.id == questionId);
 
     if (questionFound) {
       questionAnswered.value = true;
@@ -81,12 +87,13 @@ const checkQuestionPrevAnswered = () => {
 };
 
 const checkAnswer = (isAnswerCorrect: boolean) => {
-  answeredQuestions.push({
+  answeredQuestions.value.push({
     id: questionId,
     correct: isAnswerCorrect,
   });
-  localStorage.setItem("questions", JSON.stringify(answeredQuestions));
+  localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
   questionAnswered.value = true;
+  explanation.value.setAttribute('open',true)
 };
 </script>
 

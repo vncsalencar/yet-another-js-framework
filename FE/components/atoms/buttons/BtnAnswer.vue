@@ -1,7 +1,6 @@
 <template>
   <button
     :disabled="questionAnswered"
-    ref="btnAnswer"
     @click="checkAnswer"
     class="p-4 text-white border-solid border-2 border-white"
     :class="{ 'hover-text-accent hover-border-accent': !questionAnswered }"
@@ -11,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-const btnAnswer = ref(null);
 
 const props = defineProps<{
   text: string;
@@ -24,11 +22,6 @@ const emit = defineEmits<{
 }>();
 
 const checkAnswer = () => {
-  if (props.correct) {
-    console.log("acertou");
-  }
-  console.log("errou");
-
   emit("answerSelected", props.correct);
 };
 </script>
