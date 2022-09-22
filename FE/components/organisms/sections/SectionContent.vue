@@ -14,15 +14,12 @@
       ></CardContent>
     </ul>
 
-    <div class="flex justify-end items-center gap-4 mt-4">
-      <small> {{ pageCount }} pages </small>
-      <Pagination
-        :active-page="activePage"
-        :page-count="pageCount"
-        :max-pages="maxPages"
-        @page-change="pageChange"
-      ></Pagination>
-    </div>
+    <Pagination
+      :active-page="activePage"
+      :page-count="pageCount"
+      :max-pages="maxPages"
+      @page-change="pageChange"
+    ></Pagination>
   </Section>
 </template>
 

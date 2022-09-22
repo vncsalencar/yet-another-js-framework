@@ -1,7 +1,7 @@
 <template>
   <button
-    class="w-12 h-12 border-solid border-2 border-white text-white hover-text-accent"
-    :class="{ 'bg-gray': active }"
+    class="w-12 h-12 text-xl border-solid border-2 border-white hover-text-accent"
+    :class="{ 'bg-gray text-accent': active, 'text-white': !active }"
     @click="pageChanged()"
   >
     <span v-if="previous">&lt</span>

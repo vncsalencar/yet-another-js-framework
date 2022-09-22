@@ -5,22 +5,18 @@
       target="_blank"
       class="flex justify-between items-center gap-4 w-100 py-4 border-b-2 border-white group"
     >
-      <div>
-        <small class="text-accent">{{ content.contentType }}</small>
-        <p>
-          <small>
-            <b class="mb-2">{{ content.author }}</b>
-          </small>
-        </p>
+      <div class="flex justify-start flex-col gap-2">
+        <b class="text-accent">{{ content.contentType }}</b>
+        <small>
+          {{ content.author }}
+        </small>
         <h3
-          class="mb-1 cursor-pointer  line-clamp-2 md:line-clamp-1 group-hover-text-accent"
+          class="cursor-pointer line-clamp-2 md:line-clamp-1 group-hover-text-accent"
         >
           {{ content.title }}
         </h3>
-        <p class="mb-4">
-          <small>{{ formatTimeAgo(new Date(content.date)) }}</small>
-        </p>
-        <div class="flex flex-wrap gap-4 mb-2">
+        <small>{{ formatTimeAgo(new Date(content.date)) }}</small>
+        <div class="flex flex-wrap gap-4">
           <Chip v-for="tag in tags" :title="tag"></Chip>
         </div>
       </div>

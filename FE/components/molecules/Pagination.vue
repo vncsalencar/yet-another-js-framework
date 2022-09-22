@@ -1,28 +1,31 @@
 <template>
-  <ul class="flex justify-end gap-2">
-    <li>
-      <BtnPage
-        previous
-        @page-change="changePage"
-        v-show="activePage > 1"
-      ></BtnPage>
-    </li>
-    <li>
-      <BtnPage
-        v-for="i of range"
-        :page-number="i"
-        @page-change="changePage"
-        :active="i == activePage"
-      ></BtnPage>
-    </li>
-    <li>
-      <BtnPage
-        next
-        @page-change="changePage"
-        v-show="activePage < pageCount"
-      ></BtnPage>
-    </li>
-  </ul>
+  <div class="flex justify-end items-center gap-4 mt-4">
+    <p>{{pageCount}} pages</p>
+    <ul class="flex justify-end gap-2">
+      <li>
+        <BtnPage
+          previous
+          @page-change="changePage"
+          v-show="activePage > 1"
+        ></BtnPage>
+      </li>
+      <li>
+        <BtnPage
+          v-for="i of range"
+          :page-number="i"
+          @page-change="changePage"
+          :active="i == activePage"
+        ></BtnPage>
+      </li>
+      <li>
+        <BtnPage
+          next
+          @page-change="changePage"
+          v-show="activePage < pageCount"
+        ></BtnPage>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
