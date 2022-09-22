@@ -6,7 +6,7 @@
     <SectionTrending id="trending"></SectionTrending>
     <SectionContent id="content"></SectionContent>
     <SectionQuestion id="question"></SectionQuestion>
-    <SectionSocials id="socials"></SectionSocials>
+    <!-- <SectionSocials id="socials"></SectionSocials> -->
     <SectionHelpfulMaterial id="helpful"></SectionHelpfulMaterial>
     <SectionAbout id="about"></SectionAbout>
   </Container>
@@ -14,8 +14,10 @@
 
 <script setup lang="ts">
 import { useMenuStore } from "./stores/menuStore";
+import { useScrollProgressStore } from "./stores/scrollProgressStore";
 
-const store = useMenuStore();
+const menuStore = useMenuStore();
+const scrollProgressStore = useScrollProgressStore();
 
 useHead({
   title: "Yet another Javascript framework",
@@ -31,14 +33,28 @@ useHead({
 
 onMounted(() => {
   toggleMenuOnEsc();
+  calculateScrollProgressOnResize();
 });
 
 const toggleMenuOnEsc = () => {
   document.onkeydown = (ev: KeyboardEvent) => {
     if (ev.key == "Escape") {
-      store.toggle();
+      menuStore.toggle();
     }
   };
+};
+
+const calculateScrollProgressOnResize = () => {
+  const resizeObserver = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.contentRect) {
+        scrollProgressStore.calculatePageHeight();
+      }
+    }
+  });
+
+  const body = document.querySelector("body");
+  resizeObserver.observe(body);
 };
 
 const scrollTo = (sectionId: SectionIds) => {
