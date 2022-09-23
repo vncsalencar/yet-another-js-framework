@@ -1,7 +1,14 @@
 <template>
   <div class="flex justify-end items-center gap-4 mt-4">
-    <p>{{pageCount}} pages</p>
+    <p>{{ pageCount }} pages</p>
     <ul class="flex justify-end gap-2">
+      <li>
+        <BtnPage
+          first
+          @page-change="changePage"
+          v-show="activePage > 1"
+        ></BtnPage>
+      </li>
       <li>
         <BtnPage
           previous
@@ -20,6 +27,13 @@
       <li>
         <BtnPage
           next
+          @page-change="changePage"
+          v-show="activePage < pageCount"
+        ></BtnPage>
+      </li>
+      <li>
+        <BtnPage
+          last
           @page-change="changePage"
           v-show="activePage < pageCount"
         ></BtnPage>
@@ -70,6 +84,8 @@ const firstPage = computed(() => {
 const changePage = (payload: ChangePagePayload) => {
   if (payload.nextPage) activePage.value = ++activePage.value;
   if (payload.previousPage) activePage.value = --activePage.value;
+  if (payload.firstPage) activePage.value = 1;
+  if (payload.lastPage) activePage.value = props.pageCount;
   if (payload.pageClicked) activePage.value = payload.pageClicked;
 
   emit("pageChange", activePage.value);

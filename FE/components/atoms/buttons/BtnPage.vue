@@ -6,6 +6,8 @@
   >
     <span v-if="previous">&lt</span>
     <span v-if="next">&gt</span>
+    <span v-if="first">&lt&lt</span>
+    <span v-if="last">&gt&gt</span>
     <span v-else>
       {{ pageNumber }}
     </span>
@@ -18,6 +20,8 @@ const props = defineProps<{
   active?: boolean;
   previous?: boolean;
   next?: boolean;
+  first?: boolean;
+  last?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -33,6 +37,16 @@ const pageChanged = () => {
   if (props.next) {
     emit("pageChange", {
       nextPage: true,
+    });
+  }
+  if (props.first) {
+    emit("pageChange", {
+      firstPage: true,
+    });
+  }
+  if (props.last) {
+    emit("pageChange", {
+      lastPage: true,
     });
   }
   emit("pageChange", { pageClicked: props.pageNumber });

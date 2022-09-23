@@ -61,6 +61,8 @@ declare global {
         pageClicked?: number;
         nextPage?: boolean;
         previousPage?: boolean
+        firstPage?: boolean
+        lastPage?: boolean
     }
 }
 
