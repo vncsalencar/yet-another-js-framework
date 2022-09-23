@@ -50,6 +50,43 @@ sayHi();</code></pre>
           throws a ReferenceError.
         </p>
       </details>
+
+      <!-- <details
+        ref="progress"
+        v-show="questionAnswered"
+        class="group bg-primary p-4"
+      >
+        <summary class="group-hover-text-accent">Progress</summary>
+        <div>
+          <ul class="flex gap-8 justify-between mt-4">
+            <li class="flex flex-col items-center">
+              <b class="text-2xl align-middle">1</b>
+              <p class="text-center">Played</p>
+            </li>
+
+            <li class="flex flex-col items-center">
+              <b class="text-2xl align-middle">100</b>
+              <p class="text-center">Correct %</p>
+            </li>
+
+            <li class="flex flex-col items-center">
+              <b class="text-2xl align-middle">3</b>
+              <p class="text-center">
+                Current <br />
+                streak
+              </p>
+            </li>
+
+            <li class="flex flex-col items-center">
+              <b class="text-2xl align-middle">5</b>
+              <p class="text-center">
+                Max <br />
+                streak
+              </p>
+            </li>
+          </ul>
+        </div>
+      </details> -->
     </div>
   </Section>
 </template>
@@ -93,7 +130,7 @@ const checkAnswer = (isAnswerCorrect: boolean) => {
   });
   localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
   questionAnswered.value = true;
-  explanation.value.setAttribute('open',true)
+  explanation.value.setAttribute("open", true);
 };
 </script>
 

@@ -1,17 +1,12 @@
 <template>
-  <button @click="toggleMenu" class="flex flex-col gap-1 group">
-    <div
-      id="upper-burger"
-      class="w-6 h-[2px] rounded-md bg-primary"
-    ></div>
-    <div
-      id="mid-burger"
-      class="w-6 h-[2px] rounded-md bg-primary"
-    ></div>
-    <div
-      id="bottom-burger"
-      class="w-6 h-[2px] rounded-md bg-primary"
-    ></div>
+  <button
+    aria-label="Toggle menu"
+    @click="toggleMenu"
+    class="flex flex-col gap-1 group"
+  >
+    <div id="upper-burger" class="w-6 h-[2px] rounded-md bg-primary"></div>
+    <div id="mid-burger" class="w-6 h-[2px] rounded-md bg-primary"></div>
+    <div id="bottom-burger" class="w-6 h-[2px] rounded-md bg-primary"></div>
   </button>
 </template>
 

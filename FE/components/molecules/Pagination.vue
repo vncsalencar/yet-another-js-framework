@@ -1,6 +1,5 @@
 <template>
-  <div class="flex justify-end items-center gap-4 mt-4">
-    <p>{{ pageCount }} pages</p>
+  <div class="flex flex-col justify-center items-end gap-4 mt-4">
     <ul class="flex justify-end gap-2">
       <li>
         <BtnPage
@@ -39,6 +38,7 @@
         ></BtnPage>
       </li>
     </ul>
+    <p>{{ pageCount }} pages</p>
   </div>
 </template>
 
