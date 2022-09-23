@@ -40,6 +40,7 @@ defmodule YajsfBackendWeb.Router do
     get "/ping", PingController, :index
     get "/strapi/liked", StrapiController, :liked
     get "/strapi/helpful", StrapiController, :helpful
+    get "/strapi/trending", StrapiController, :trending
   end
 
   pipeline :openapi do

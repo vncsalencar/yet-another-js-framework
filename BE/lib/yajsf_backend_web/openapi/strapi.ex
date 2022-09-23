@@ -52,4 +52,22 @@ defmodule YajsfBackendWeb.Schemas do
       }
     })
   end
+
+  defmodule GitHubTrending do
+    require OpenApiSpex
+    alias OpenApiSpex.{Schema}
+
+    OpenApiSpex.schema(%{
+      type: :object,
+      required: [:title],
+      properties: %{
+        id: %Schema{type: :string},
+        title: %Schema{type: :string},
+        description: %Schema{type: :string},
+        language: %Schema{type: :string},
+        stars: %Schema{type: :string},
+        starsToday: %Schema{type: :string}
+      }
+    })
+  end
 end

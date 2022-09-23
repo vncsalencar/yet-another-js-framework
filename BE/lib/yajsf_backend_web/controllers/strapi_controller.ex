@@ -1,11 +1,13 @@
 defmodule YajsfBackendWeb.StrapiController do
+  require Logger
   use YajsfBackendWeb, :controller
   use OpenApiSpex.ControllerSpecs
-  alias YajsfBackendWeb.Schemas.{ContentWeLiked, HelpfulMaterial}
+  alias YajsfBackendWeb.Schemas.{ContentWeLiked, HelpfulMaterial, GitHubTrending}
 
   @strapi_paths %{
     "liked" => "contents-we-liked",
-    "helpful" => "helpful-materials"
+    "helpful" => "helpful-materials",
+    "trending" => "github-trendings"
   }
 
   tags ["users"]
@@ -46,6 +48,49 @@ defmodule YajsfBackendWeb.StrapiController do
     end
   end
 
+  operation :trending,
+    summary: "GitHub Trending",
+    responses: [
+      ok: {"GitHubTrending", "application/json", GitHubTrending}
+    ]
+
+  def trending(conn, params) do
+    case request_strapi_content("trending", params) do
+      {:ok, %{"status_code" => status_code, "body" => body}} ->
+        conn |> put_status(status_code) |> json(body)
+
+      {:error, %{"reason" => reason}} ->
+        conn
+        |> put_status(:internal_server_error)
+        |> json(%{"error" => "Internal server error", "reason" => reason})
+    end
+  end
+
+  def create_trendings(trendings) do
+    api_path = Map.get(@strapi_paths, "trending")
+    strapi_url = System.fetch_env!("STRAPI_URL")
+    strapi_token = System.fetch_env!("STRAPI_TOKEN")
+
+    request_url = "#{strapi_url}/api/#{api_path}"
+
+    Enum.each(trendings, fn trending ->
+      body = Jason.encode!(%{"data" => trending})
+      IO.inspect(body)
+
+      case HTTPoison.post(request_url, body, %{
+             "Authorization" => "Bearer #{strapi_token}",
+             "Content-type" => "application/json"
+           }) do
+        {:ok, response} ->
+          Logger.debug("GitHubTrending creation response")
+          IO.inspect(response.body)
+
+        {:error, reason} ->
+          Logger.debug("Could not create trending.", %{"reason" => reason, "payload" => trending})
+      end
+    end)
+  end
+
   defp strip(object) do
     case object do
       %{"data" => data, "meta" => meta} ->
@@ -69,6 +114,7 @@ defmodule YajsfBackendWeb.StrapiController do
   end
 
   defp request_strapi_content(content_type, params) do
+    sort = Map.get(params, "sort", "createdAt:DESC")
     page_size = Map.get(params, "page_size", 3)
     page = Map.get(params, "page", 0)
 
@@ -81,7 +127,8 @@ defmodule YajsfBackendWeb.StrapiController do
       "#{strapi_url}/api/#{api_path}" <>
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=#{page_size}" <>
-        "&populate=*"
+        "&populate=*" <>
+        "&sort=#{sort}"
 
     case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->

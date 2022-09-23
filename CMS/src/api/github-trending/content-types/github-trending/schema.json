@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "github_trendings",
+  "info": {
+    "singularName": "github-trending",
+    "pluralName": "github-trendings",
+    "displayName": "GithubTrending"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "stars": {
+      "type": "biginteger"
+    },
+    "forks": {
+      "type": "biginteger"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": [
+        "JavaScript",
+        "TypeScript"
+      ]
+    },
+    "starsToday": {
+      "type": "biginteger"
+    }
+  }
+}

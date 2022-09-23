@@ -43,8 +43,7 @@ defmodule YajsfBackend.MixProject do
       {:phoenix, "~> 1.6.12"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.17.5"},
-      {:floki, ">= 0.30.0", only: :test},
+      {:phoenix_live_view, "~> 0.17.7"},
       {:phoenix_live_dashboard, "~> 0.6"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
@@ -58,7 +57,9 @@ defmodule YajsfBackend.MixProject do
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:httpoison, "~> 1.8"},
       {:cors_plug, "~> 3.0"},
-      {:open_api_spex, "~> 3.12"}
+      {:open_api_spex, "~> 3.12"},
+      {:floki, "~> 0.33.0"},
+      {:quantum, "~> 3.0"}
     ]
   end
 

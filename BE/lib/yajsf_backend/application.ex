@@ -13,9 +13,10 @@ defmodule YajsfBackend.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: YajsfBackend.PubSub},
       # Start the Endpoint (http/https)
-      YajsfBackendWeb.Endpoint
+      YajsfBackendWeb.Endpoint,
       # Start a worker by calling: YajsfBackend.Worker.start_link(arg)
       # {YajsfBackend.Worker, arg}
+      YajsfBackend.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
