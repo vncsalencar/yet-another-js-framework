@@ -19,7 +19,10 @@ defmodule YajsfBackendWeb.StrapiController do
     ]
 
   def liked(conn, params) do
-    case request_strapi_content("liked", params) do
+    sort = Map.get(params, "sort", "createdAt:desc")
+    append_url = "&sort=#{sort}"
+
+    case request_strapi_content("liked", params, append_url) do
       {:ok, %{"status_code" => status_code, "body" => body}} ->
         conn |> put_status(status_code) |> json(body)
 
@@ -55,7 +58,10 @@ defmodule YajsfBackendWeb.StrapiController do
     ]
 
   def trending(conn, params) do
-    case request_strapi_content("trending", params) do
+    sort = Map.get(params, "sort", "createdAt:desc")
+    append_url = "&sort[1]=#{sort}" <> "&sort[0]=starsToday:desc"
+
+    case request_strapi_content("trending", params, append_url) do
       {:ok, %{"status_code" => status_code, "body" => body}} ->
         conn |> put_status(status_code) |> json(body)
 
@@ -113,8 +119,7 @@ defmodule YajsfBackendWeb.StrapiController do
     end
   end
 
-  defp request_strapi_content(content_type, params) do
-    sort = Map.get(params, "sort", "createdAt:DESC")
+  defp request_strapi_content(content_type, params, append_url \\ "") do
     page_size = Map.get(params, "page_size", 3)
     page = Map.get(params, "page", 0)
 
@@ -127,8 +132,8 @@ defmodule YajsfBackendWeb.StrapiController do
       "#{strapi_url}/api/#{api_path}" <>
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=#{page_size}" <>
-        "&populate=*" <>
-        "&sort=#{sort}"
+        append_url <>
+        "&populate=*"
 
     case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
