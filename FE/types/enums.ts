@@ -2,7 +2,7 @@
 export enum ApiRouteEnum {
     Content = "liked",
     HelpfulMaterial = "helpful",
-    GithubTrending = "trending"
+    Trending = "trending"
 }
 
 export enum ContentTypeEnum {

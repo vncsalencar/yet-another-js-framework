@@ -13,9 +13,10 @@
       ...AND <span class="text-accent">GITHUB</span>
     </h2>
     <ul class="flex flex-col gap-4">
-      <CardGithub></CardGithub>
-      <CardGithub></CardGithub>
-      <CardGithub></CardGithub>
+      <CardGithub
+        v-for="github of trendingList.data"
+        :github-trending="github"
+      ></CardGithub>
     </ul>
   </Section>
 </template>
@@ -25,11 +26,13 @@ import { Ref } from "vue";
 import { ApiRouteEnum } from "~~/types/enums";
 
 const config = useRuntimeConfig();
-const API_URL = `${config.CMS}/${ApiRouteEnum.GithubTrending}`;
+const API_URL = `${config.CMS}/${ApiRouteEnum.Trending}`;
 
-// const { data: githubTrendingList, pending } = await useFetch<
-//   Page<GithubTrending>
-// >(apiUrl);
+const { data: trendingList, pending } = await useFetch<Page<GithubTrending>>(
+  API_URL
+);
+
+console.log(trendingList);
 
 const npmPackages: Ref<NpmPackage[]> = ref([
   {

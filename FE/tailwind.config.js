@@ -11,23 +11,22 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'primary': 'RobotoMono',
-      'secondary': 'HussarBoldWeb',
-      'title': 'Anton'
+      primary: "RobotoMono",
+      secondary: "HussarBoldWeb",
+      title: "Anton",
     },
-      colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
-        'white': '#e9efff',
-        'gray': '#44475a',
-        'primary': '#282a36',
-        'secondary': '#20222b',
-        'accent': '#f0db4f',
-        'green': '#93c961',
-        'red': '#be5944',
-      },
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      white: "#e9efff",
+      gray: "#44475a",
+      primary: "#282a36",
+      secondary: "#20222b",
+      accent: "#f0db4f",
+      green: "#93c961",
+      red: "#be5944",
+      blue: "#007acc ",
+    },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-  ],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
