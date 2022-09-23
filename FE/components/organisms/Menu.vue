@@ -15,10 +15,11 @@
 </template>
 
 <script setup lang="ts">
+import { SectionIdEnum } from "~~/types/enums";
 import { useMenuStore } from "../../stores/menuStore";
 
 const emit = defineEmits<{
-  (e: "changeSection", sectionId: SectionIds): void;
+  (e: "changeSection", sectionId: SectionIdEnum): void;
 }>();
 
 const store = useMenuStore();
@@ -27,20 +28,17 @@ const closeMenu = () => {
   store.toggle();
 };
 
-const changeSection = (sectionId: SectionIds) => {
+const changeSection = (sectionId: SectionIdEnum) => {
   closeMenu();
   emit("changeSection", sectionId);
 };
 
 const listItems = [
-  { name: "Trending on NPM and Github", sectionId: "trending" as SectionIds },
-  { name: "Content we liked", sectionId: "content" as SectionIds },
-  { name: "Question of the day", sectionId: "question" as SectionIds },
-  // { name: "Twitter", sectionId: "twitter" as SectionIds },
-  // { name: "Tiktok", sectionId: "tiktok" as SectionIds },
-  // { name: "Reddit", sectionId: "reddit" as SectionIds },
-  { name: "Helpful Material", sectionId: "helpful" as SectionIds },
-  { name: "About this project", sectionId: "about" as SectionIds },
+  { name: "Trending on NPM and Github", sectionId: SectionIdEnum.Trending },
+  { name: "Content we liked", sectionId: SectionIdEnum.Content },
+  { name: "Question of the day", sectionId: SectionIdEnum.Question },
+  { name: "Helpful Material", sectionId: SectionIdEnum.HelpfulMaterial },
+  { name: "About this project", sectionId: SectionIdEnum.About },
 ];
 </script>
 

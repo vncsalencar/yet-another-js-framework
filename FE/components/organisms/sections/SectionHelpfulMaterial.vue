@@ -13,10 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import CardHelpfulMaterial from '~~/components/molecules/cards/CardHelpfulMaterial.vue';
+import { ApiRouteEnum } from '~~/types/enums';
+
 const config = useRuntimeConfig();
+const API_URL = `${config.CMS}/${ApiRouteEnum.HelpfulMaterial}`;
+
 const { data: materialList, pending } = await useFetch<Page<HelpfulMaterial>>(
-  `${config.CMS}/helpful`,
+  API_URL,
   {
     params:{
       page_size: 5

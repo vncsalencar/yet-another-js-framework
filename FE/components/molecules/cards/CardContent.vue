@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ContentType } from "../../../types/enums";
+import { ContentTypeEnum } from "../../../types/enums";
 
 const props = defineProps<{
   content: Content;
@@ -45,21 +45,21 @@ const tags = computed(() => {
 });
 
 const thumbnail = computed(() => {
-  if (props.content.contentType == ContentType.Video) {
+  if (props.content.contentType == ContentTypeEnum.Video) {
     return {
       alt: `Youtube Video ${props.content.title}`,
       url: getYoutubeThumbnail(),
     };
   }
 
-  if (props.content.contentType == ContentType.Project) {
+  if (props.content.contentType == ContentTypeEnum.Project) {
     return {
       alt: "Github",
       url: "/images/logo-github.png",
     };
   }
 
-  if (props.content.contentType == ContentType.Article) {
+  if (props.content.contentType == ContentTypeEnum.Article) {
     return {
       alt: props.content.thumbnailAlt || props.content.title,
       url: props.content.thumbnailUrl || getArticleThumbnail(),

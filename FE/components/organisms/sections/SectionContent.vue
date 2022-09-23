@@ -24,19 +24,22 @@
 </template>
 
 <script setup lang="ts">
+import { ApiRouteEnum } from "~~/types/enums";
+
 const config = useRuntimeConfig();
-const URL = `${config.CMS}/liked`;
+const API_URL = `${config.CMS}/${ApiRouteEnum.Content}`;
+
 const activePage = ref(1);
 const pageCount = ref(0);
 const maxPages = ref(5);
 
-const { data: contentList, pending } = await useFetch<Page<Content>>(URL);
+const { data: contentList, pending } = await useFetch<Page<Content>>(API_URL);
 pageCount.value = contentList.value.meta.pagination.pageCount;
 
 const pageChange = async (newPage: number) => {
   activePage.value = newPage;
   pending.value = true;
-  contentList.value = await $fetch(URL, {
+  contentList.value = await $fetch(API_URL, {
     params: {
       page: newPage,
     },

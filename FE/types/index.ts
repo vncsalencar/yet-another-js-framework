@@ -1,4 +1,4 @@
-import { ContentType } from "./enums"
+import { ContentTypeEnum } from "./enums"
 
 declare global {
     interface Page<T> {
@@ -24,7 +24,7 @@ declare global {
 
     interface Content {
         title: string,
-        contentType: ContentType,
+        contentType: ContentTypeEnum,
         date: string,
         author: string,
         thumbnailAlt?: string,
@@ -33,11 +33,7 @@ declare global {
         link: string,
     }
 
-    interface ChangePagePayload {
-        pageClicked?: number;
-        nextPage?: boolean;
-        previousPage?: boolean
-    }
+
 
     interface HelpfulMaterial {
         title: string,
@@ -52,17 +48,20 @@ declare global {
         correct: boolean
     }
 
+    interface GithubTrending {
+        title: string,
+        description: string,
+        stars: number,
+        starsToday: number,
+        forks: number,
+        language: string
+    }
 
-    type SectionIds =
-        "home" |
-        "feature" |
-        "content" |
-        "twitter" |
-        "tiktok" |
-        "reddit" |
-        "helpful" |
-        "about"
-
+    interface ChangePagePayload {
+        pageClicked?: number;
+        nextPage?: boolean;
+        previousPage?: boolean
+    }
 }
 
 export { }

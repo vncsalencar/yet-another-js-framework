@@ -12,9 +12,7 @@
     <h2 class="mt-8 mb-4 text-center uppercase">
       ...AND <span class="text-accent">GITHUB</span>
     </h2>
-    <ul
-      class="flex flex-col gap-4"
-    >
+    <ul class="flex flex-col gap-4">
       <CardGithub></CardGithub>
       <CardGithub></CardGithub>
       <CardGithub></CardGithub>
@@ -24,6 +22,14 @@
 
 <script setup lang="ts">
 import { Ref } from "vue";
+import { ApiRouteEnum } from "~~/types/enums";
+
+const config = useRuntimeConfig();
+const API_URL = `${config.CMS}/${ApiRouteEnum.GithubTrending}`;
+
+// const { data: githubTrendingList, pending } = await useFetch<
+//   Page<GithubTrending>
+// >(apiUrl);
 
 const npmPackages: Ref<NpmPackage[]> = ref([
   {

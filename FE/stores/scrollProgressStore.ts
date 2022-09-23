@@ -5,7 +5,6 @@ export const useScrollProgressStore = defineStore("scrollStore", {
         pageHeight: 0,
     }),
     actions: {
-        //TODO: Use ResizeObserver to do this automatically
         calculatePageHeight() {
             this.pageHeight = document.documentElement.scrollHeight -
                 document.documentElement.clientHeight;
@@ -22,3 +21,4 @@ export const useScrollProgressStore = defineStore("scrollStore", {
         }
     }
 })
+

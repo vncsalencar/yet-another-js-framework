@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { useMenuStore } from "./stores/menuStore";
 import { useScrollProgressStore } from "./stores/scrollProgressStore";
+import { SectionIdEnum } from "./types/enums";
 
 const menuStore = useMenuStore();
 const scrollProgressStore = useScrollProgressStore();
@@ -57,7 +58,7 @@ const calculateScrollProgressOnResize = () => {
   resizeObserver.observe(body);
 };
 
-const scrollTo = (sectionId: SectionIds) => {
+const scrollTo = (sectionId: SectionIdEnum) => {
   const position = document.getElementById(sectionId).offsetTop - 32;
   window.scrollTo({ top: position, behavior: "smooth" });
 };
