@@ -1,6 +1,6 @@
 <template>
   <button
-    class="w-12 h-12 btn-primary"
+    class="w-12 h-12 text-lg font-bold btn-primary"
     :class="{ 'bg-primary text-accent': active, 'text-white': !active }"
     @click="pageChanged()"
   >

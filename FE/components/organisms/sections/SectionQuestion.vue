@@ -22,15 +22,15 @@ sayHi();</code></pre>
           v-for="answer of answers"
           :text="answer.text"
           :correct="answer.correct"
-          :question-answered="questionAnswered"
+          :question-answered="answered"
           :class="{
-            'border-green': questionAnswered && answer.correct,
-            'border-red': questionAnswered && !answer.correct,
+            'border-green': answered && answer.correct,
+            'border-red': answered && !answer.correct,
           }"
         ></BtnAnswer>
       </div>
 
-      <Details title="Explanation" ref="explanation" v-show="questionAnswered">
+      <Details title="Explanation" ref="explanation" v-show="answered">
         <p>
           Within the function, we first declare the name variable with the var
           keyword. This means that the variable gets hoisted (memory space is
@@ -46,20 +46,26 @@ sayHi();</code></pre>
         </p>
       </Details>
 
-      <Details title="Progress" ref="progress" v-show="questionAnswered">
+      <Details title="Progress" ref="progress" v-show="answered">
         <ul class="flex gap-8 justify-around mt-4">
           <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">1</b>
+            <b class="text-2xl align-middle">{{
+              progressData.questionsAnswered
+            }}</b>
             <p class="text-center">Questions <br />answered</p>
           </li>
 
           <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">100</b>
+            <b class="text-2xl align-middle"
+              >{{ Number(progressData.correctPercentage).toFixed(2) }}%</b
+            >
             <p class="text-center">Correct %</p>
           </li>
 
           <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">3</b>
+            <b class="text-2xl align-middle">{{
+              progressData.currentStreak
+            }}</b>
             <p class="text-center">
               Current <br />
               streak
@@ -67,7 +73,7 @@ sayHi();</code></pre>
           </li>
 
           <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">5</b>
+            <b class="text-2xl align-middle">{{ progressData.maxStreak }}</b>
             <p class="text-center">
               Max <br />
               streak
@@ -83,9 +89,17 @@ sayHi();</code></pre>
 </template>
 
 <script setup lang="ts">
-const questionAnswered = ref(false);
+const answered = ref(false);
+const correctAnswer = ref(false);
+
 const answeredQuestions = ref([]);
-const explanation = ref(null);
+const progressData = ref({
+  questionsAnswered: 0,
+  correctPercentage: 0,
+  currentStreak: 0,
+  maxStreak: 0,
+});
+
 const countdownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
 const questionId = "1";
@@ -97,8 +111,21 @@ const answers = [
 ];
 
 onMounted(() => {
-  // checkQuestionPrevAnswered();
+  checkQuestionPrevAnswered();
+  getProgress();
 });
+
+const checkAnswer = (correct: boolean) => {
+  correctAnswer.value = correct;
+  answeredQuestions.value.push({
+    id: questionId,
+    correct: correct,
+  });
+  localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
+  answered.value = true;
+
+  updateProgress();
+};
 
 const checkQuestionPrevAnswered = () => {
   let localStorageQuestions = localStorage.getItem("questions");
@@ -107,7 +134,7 @@ const checkQuestionPrevAnswered = () => {
     let questionFound = answeredQuestions.value.find((q) => q.id == questionId);
 
     if (questionFound) {
-      questionAnswered.value = true;
+      answered.value = true;
     }
     return;
   }
@@ -115,14 +142,34 @@ const checkQuestionPrevAnswered = () => {
   localStorage.setItem("questions", JSON.stringify([]));
 };
 
-const checkAnswer = (isAnswerCorrect: boolean) => {
-  answeredQuestions.value.push({
-    id: questionId,
-    correct: isAnswerCorrect,
-  });
-  localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
-  questionAnswered.value = true;
-  explanation.value.setAttribute("open", true);
+const getProgress = () => {
+  let localStorageProgress = localStorage.getItem("progress");
+  if (localStorageProgress) {
+    progressData.value = JSON.parse(localStorageProgress);
+    return;
+  }
+  localStorage.setItem("progress", JSON.stringify(progressData.value));
+};
+
+const updateProgress = () => {
+  let correctAnswers = answeredQuestions.value.filter(
+    (answer) => answer.correct
+  ).length;
+
+  progressData.value.questionsAnswered = ++progressData.value.questionsAnswered;
+  progressData.value.correctPercentage =
+    (correctAnswers / progressData.value.questionsAnswered) * 100;
+
+  progressData.value.currentStreak = correctAnswer.value
+    ? ++progressData.value.currentStreak
+    : 0;
+
+  progressData.value.maxStreak =
+    progressData.value.currentStreak > progressData.value.maxStreak
+      ? progressData.value.currentStreak
+      : progressData.value.maxStreak;
+
+  localStorage.setItem("progress", JSON.stringify(progressData.value));
 };
 </script>
 

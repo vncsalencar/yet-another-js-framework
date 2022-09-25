@@ -38,18 +38,6 @@ watch(active, (newActive, oldActive) => {
   }
 });
 
-onMounted(() => {
-  // window.addEventListener("scroll", () => {
-  //   let currentScroll = window.pageYOffset;
-  //   if (currentScroll > lastScroll) {
-  //     hideHeader();
-  //   } else {
-  //     showHeader();
-  //   }
-  //   lastScroll = currentScroll;
-  // });
-});
-
 const showHeader = () => {
   header.value.classList.add("header-show");
   header.value.classList.remove("header-hide");
@@ -70,7 +58,7 @@ h1 {
     -webkit-text-stroke-color: rgb(40 42 54);
 
     @media (min-width: 768px) {
-    -webkit-text-stroke-width: 2.5px;
+      -webkit-text-stroke-width: 2.5px;
     }
   }
 }

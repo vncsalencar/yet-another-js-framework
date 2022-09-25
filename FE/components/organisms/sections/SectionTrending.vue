@@ -19,7 +19,7 @@
         :github-trending="github"
       ></CardGithub>
     </ul>
-    <ul v-if="pending || loadingMore" class="flex-col gap-4 mt-4 md:mt-0">
+    <ul v-if="pending || loadingMore" class="flex flex-col gap-4 mt-4 md:mt-0">
       <SkeletonCardGithub v-for="i in 3"></SkeletonCardGithub>
     </ul>
 

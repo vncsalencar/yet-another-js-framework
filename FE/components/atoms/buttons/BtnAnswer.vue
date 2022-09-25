@@ -4,7 +4,8 @@
     @click="checkAnswer"
     class="p-4 btn-primary"
   >
-    {{ text }}
+    <span class="mr-4 font-bold text-accent" v-show="selected">X</span
+    >{{ text }}
   </button>
 </template>
 
@@ -19,7 +20,10 @@ const emit = defineEmits<{
   (e: "answerSelected", correct: boolean): void;
 }>();
 
+const selected = ref(false);
+
 const checkAnswer = () => {
+  selected.value = true;
   emit("answerSelected", props.correct);
 };
 </script>

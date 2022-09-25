@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="hidden md:flex flex-col justify-center items-end gap-4 mt-4">
-      <ul class="flex gap-2">
+      <ul class="flex">
         <li>
           <BtnPage
             first
