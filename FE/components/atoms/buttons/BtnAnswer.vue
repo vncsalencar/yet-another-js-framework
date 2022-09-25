@@ -1,10 +1,7 @@
 <template>
-  <button
-    :disabled="questionAnswered"
-    @click="checkAnswer"
-    class="p-4 btn-primary"
-  >
-    <span class="mr-4 font-bold text-accent" v-show="selected">X</span
+  <button :disabled="answered" @click="checkAnswer" class="p-4 btn-primary">
+    <span class="mr-4 font-bold text-accent" v-show="answered && id == selected"
+      >X</span
     >{{ text }}
   </button>
 </template>
@@ -13,18 +10,17 @@
 const props = defineProps<{
   text: string;
   correct: boolean;
-  questionAnswered: boolean;
+  id: number;
+  answered: boolean;
+  selected: number;
 }>();
 
 const emit = defineEmits<{
-  (e: "answerSelected", correct: boolean): void;
+  (e: "answerSelected", correct: boolean, selected: number): void;
 }>();
 
-const selected = ref(false);
-
 const checkAnswer = () => {
-  selected.value = true;
-  emit("answerSelected", props.correct);
+  emit("answerSelected", props.correct, props.id);
 };
 </script>
 

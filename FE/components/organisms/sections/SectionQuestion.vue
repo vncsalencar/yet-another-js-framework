@@ -22,7 +22,9 @@ sayHi();</code></pre>
           v-for="answer of answers"
           :text="answer.text"
           :correct="answer.correct"
-          :question-answered="answered"
+          :id="answer.id"
+          :answered="answered"
+          :selected="selectedAnswer"
           :class="{
             'border-green': answered && answer.correct,
             'border-red': answered && !answer.correct,
@@ -91,6 +93,7 @@ sayHi();</code></pre>
 <script setup lang="ts">
 const answered = ref(false);
 const correctAnswer = ref(false);
+const selectedAnswer = ref(0);
 
 const answeredQuestions = ref([]);
 const progressData = ref({
@@ -102,12 +105,12 @@ const progressData = ref({
 
 const countdownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
-const questionId = "1";
+const questionId = "2";
 const answers = [
-  { text: "Lydia and undefined", correct: false },
-  { text: "Lydia and ReferenceError", correct: false },
-  { text: "ReferenceError and 21", correct: false },
-  { text: "undefined and ReferenceError", correct: true },
+  { id: 1, text: "Lydia and undefined", correct: false },
+  { id: 2, text: "Lydia and ReferenceError", correct: false },
+  { id: 3, text: "ReferenceError and 21", correct: false },
+  { id: 4, text: "undefined and ReferenceError", correct: true },
 ];
 
 onMounted(() => {
@@ -115,11 +118,13 @@ onMounted(() => {
   getProgress();
 });
 
-const checkAnswer = (correct: boolean) => {
+const checkAnswer = (correct: boolean, selected: number) => {
   correctAnswer.value = correct;
+  selectedAnswer.value = selected;
   answeredQuestions.value.push({
     id: questionId,
     correct: correct,
+    selected: selected,
   });
   localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
   answered.value = true;
@@ -135,6 +140,7 @@ const checkQuestionPrevAnswered = () => {
 
     if (questionFound) {
       answered.value = true;
+      selectedAnswer.value = questionFound.selected;
     }
     return;
   }
