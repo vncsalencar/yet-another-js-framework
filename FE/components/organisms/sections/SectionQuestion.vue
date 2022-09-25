@@ -54,45 +54,6 @@ sayHi();</code></pre>
         :correct-answer="correctAnswer"
         ref="progress"
       ></Progress>
-
-      <!-- <Details title="Progress" ref="progress" v-show="answered">
-        <ul class="flex gap-8 justify-around mt-4">
-          <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">{{
-              progressData.questionsAnswered
-            }}</b>
-            <p class="text-center">Questions <br />answered</p>
-          </li>
-
-          <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle"
-              >{{ Number(progressData.correctPercentage).toFixed(2) }}%</b
-            >
-            <p class="text-center">Correct %</p>
-          </li>
-
-          <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">{{
-              progressData.currentStreak
-            }}</b>
-            <p class="text-center">
-              Current <br />
-              streak
-            </p>
-          </li>
-
-          <li class="flex flex-col items-center">
-            <b class="text-2xl align-middle">{{ progressData.maxStreak }}</b>
-            <p class="text-center">
-              Max <br />
-              streak
-            </p>
-          </li>
-        </ul>
-        <div class="flex justify-center mt-4">
-          <Countdown :count-down-date="countdownDate"></Countdown>
-        </div>
-      </Details> -->
     </div>
   </Section>
 </template>
@@ -105,7 +66,7 @@ const selectedAnswer = ref(0);
 const progress = ref();
 
 const answeredQuestions = ref([]);
-const questionId = "2";
+const questionId = "112133133";
 const answers = [
   { id: 1, text: "Lydia and undefined", correct: false },
   { id: 2, text: "Lydia and ReferenceError", correct: false },
@@ -128,18 +89,18 @@ const checkAnswer = (correct: boolean, selected: number) => {
   localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
   answered.value = true;
 
-  progress.value.updateProgress();
+  progress.value.updateProgress(correctAnswer.value);
 };
 
 const checkQuestionPrevAnswered = () => {
   let localStorageQuestions = localStorage.getItem("questions");
   if (localStorageQuestions) {
     answeredQuestions.value = JSON.parse(localStorageQuestions);
-    let questionFound = answeredQuestions.value.find((q) => q.id == questionId);
+    let answerFound = answeredQuestions.value.find((q) => q.id == questionId);
 
-    if (questionFound) {
+    if (answerFound) {
       answered.value = true;
-      selectedAnswer.value = questionFound.selected;
+      selectedAnswer.value = answerFound.selected;
     }
     return;
   }

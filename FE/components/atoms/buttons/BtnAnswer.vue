@@ -1,7 +1,7 @@
 <template>
   <button :disabled="answered" @click="checkAnswer" class="p-4 btn-primary">
     <span class="mr-4 font-bold text-accent" v-show="answered && id == selected"
-      >X</span
+      >x</span
     >{{ text }}
   </button>
 </template>

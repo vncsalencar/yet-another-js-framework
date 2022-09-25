@@ -1,6 +1,6 @@
 <template>
   <Details title="Progress" ref="progress" v-show="answered">
-    <ul class="flex gap-8 justify-around mt-4">
+    <ul class="flex flex-col md:flex-row gap-8 justify-between mt-4">
       <li class="flex flex-col items-center">
         <b class="text-2xl align-middle">{{
           progressData.questionsAnswered
@@ -12,7 +12,7 @@
         <b class="text-2xl align-middle"
           >{{ Number(progressData.correctPercentage).toFixed(2) }}%</b
         >
-        <p class="text-center">Correct %</p>
+        <p class="text-center">Correct</p>
       </li>
 
       <li class="flex flex-col items-center">
@@ -66,7 +66,7 @@ const getProgress = () => {
   localStorage.setItem("progress", JSON.stringify(progressData.value));
 };
 
-const updateProgress = () => {
+const updateProgress = (correctAnswer: boolean) => {
   let correctAnswers = props.answeredQuestions.filter(
     (answer) => answer.correct
   ).length;
@@ -75,7 +75,7 @@ const updateProgress = () => {
   progressData.value.correctPercentage =
     (correctAnswers / progressData.value.questionsAnswered) * 100;
 
-  progressData.value.currentStreak = props.correctAnswer
+  progressData.value.currentStreak = correctAnswer
     ? ++progressData.value.currentStreak
     : 0;
 
