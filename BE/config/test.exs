@@ -8,11 +8,12 @@ config :yajsf_backend, YajsfBackendWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :yajsf_backend, YajsfBackend.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :yajsf_backend, YajsfBackend.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+import_config "test.secret.exs"

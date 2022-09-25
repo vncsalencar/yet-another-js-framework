@@ -3,6 +3,7 @@ defmodule YajsfBackendWeb.StrapiController do
   use YajsfBackendWeb, :controller
   use OpenApiSpex.ControllerSpecs
   alias YajsfBackendWeb.Schemas.{ContentWeLiked, HelpfulMaterial, GitHubTrending}
+  alias YajsfBackend.{Env}
 
   @strapi_paths %{
     "liked" => "contents-we-liked",
@@ -74,25 +75,50 @@ defmodule YajsfBackendWeb.StrapiController do
 
   def create_trendings(trendings) do
     api_path = Map.get(@strapi_paths, "trending")
-    strapi_url = System.fetch_env!("STRAPI_URL")
-    strapi_token = System.fetch_env!("STRAPI_TOKEN")
-
-    request_url = "#{strapi_url}/api/#{api_path}"
+    request_url = "#{Env.env(:strapi_url)}/api/#{api_path}"
 
     Enum.each(trendings, fn trending ->
       body = Jason.encode!(%{"data" => trending})
-      IO.inspect(body)
 
       case HTTPoison.post(request_url, body, %{
-             "Authorization" => "Bearer #{strapi_token}",
+             "Authorization" => "Bearer #{Env.env(:strapi_token)}",
              "Content-type" => "application/json"
            }) do
-        {:ok, response} ->
+        {:ok, _response} ->
           Logger.debug("GitHubTrending creation response")
-          IO.inspect(response.body)
 
         {:error, reason} ->
-          Logger.debug("Could not create trending.", %{"reason" => reason, "payload" => trending})
+          Logger.debug("Could not create trending.", %{
+            "reason" => reason,
+            "payload" => trending
+          })
+      end
+    end)
+  end
+
+  def delete_trendings(trendings) do
+    api_path = Map.get(@strapi_paths, "trending")
+    url = "#{Env.env(:strapi_url)}/api/#{api_path}"
+
+    Enum.each(trendings, fn trending ->
+      request_url = "#{url}/#{trending["id"]}"
+
+      case HTTPoison.delete(request_url, %{
+             "Authorization" => "Bearer #{Env.env(:strapi_token)}",
+             "Content-type" => "application/json"
+           }) do
+        {:ok, %HTTPoison.Response{status_code: 200} = response} ->
+          IO.inspect(response)
+          Logger.debug("GitHubTrending with id:`#{trending["id"]}` deleted succesfully")
+
+        {:ok, response} ->
+          IO.inspect(response)
+
+          Logger.debug("Could not delete GitHubTrending with id `#{trending["id"]}`")
+
+        {:error, reason} ->
+          Logger.debug("Could not delete GitHubTrending iwth id `#{trending["id"]}`")
+          IO.inspect(reason)
       end
     end)
   end
@@ -119,23 +145,41 @@ defmodule YajsfBackendWeb.StrapiController do
     end
   end
 
+  def get_all_content(content_type, page \\ 0, content \\ []) do
+    api_path = Map.get(@strapi_paths, content_type)
+
+    request_url =
+      "#{Env.env(:strapi_url)}/api/#{api_path}" <>
+        "?pagination[page]=#{page}" <>
+        "&pagination[pageSize]=100"
+
+    %HTTPoison.Response{body: body} =
+      HTTPoison.get!(request_url, %{"Authorization" => "Bearer #{Env.env(:strapi_token)}"})
+
+    %{"data" => data} = Jason.decode!(body)
+    content = content ++ data
+
+    if not Enum.empty?(data) do
+      get_all_content(content_type, page + 1, content)
+    end
+
+    content
+  end
+
   defp request_strapi_content(content_type, params, append_url \\ "") do
     page_size = Map.get(params, "page_size", 3)
     page = Map.get(params, "page", 0)
 
-    strapi_url = System.fetch_env!("STRAPI_URL")
-    strapi_token = System.fetch_env!("STRAPI_TOKEN")
-
     api_path = Map.get(@strapi_paths, content_type)
 
     request_url =
-      "#{strapi_url}/api/#{api_path}" <>
+      "#{Env.env(:strapi_url)}/api/#{api_path}" <>
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=#{page_size}" <>
         append_url <>
         "&populate=*"
 
-    case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{strapi_token}"}) do
+    case HTTPoison.get(request_url, %{"Authorization" => "Bearer #{Env.env(:strapi_token)}"}) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         decoded = Jason.decode!(body)
         {:ok, %{"status_code" => 200, "body" => strip(decoded)}}

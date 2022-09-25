@@ -65,3 +65,5 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :open_api_spex, :cache_adapter, OpenApiSpex.Plug.NoneCache
+
+import_config "dev.secret.exs"

@@ -1,6 +1,7 @@
 defmodule YajsfBackend.GithubTrending do
   require Logger
   require YajsfBackendWeb.StrapiController
+  alias YajsfBackendWeb.{StrapiController}
 
   def fetch_trending_page(language) do
     base_url = "https://github.com/trending/#{language}?since=daily&spoken_language_code=en"
@@ -14,7 +15,7 @@ defmodule YajsfBackend.GithubTrending do
         {:error}
 
       {:error, %HTTPoison.Error{reason: reason}} ->
-        {:error}
+        {:error, reason}
     end
   end
 
@@ -83,12 +84,18 @@ defmodule YajsfBackend.GithubTrending do
   end
 
   def sync_task do
-    javascript_repos = get_trending_repos("javascript")
-    typescript_repos = get_trending_repos("typescript")
+    try do
+      trendings = StrapiController.get_all_content("trending")
+      javascript_repos = get_trending_repos("javascript")
+      typescript_repos = get_trending_repos("typescript")
 
-    task_result =
-      YajsfBackendWeb.StrapiController.create_trendings(javascript_repos ++ typescript_repos)
-
-    Logger.debug("`CreateTrendings` task result", task_result)
+      :ok = StrapiController.create_trendings(javascript_repos ++ typescript_repos)
+      :ok = StrapiController.delete_trendings(trendings)
+      Logger.debug("`CreateTrendings` task succesfully finished")
+    rescue
+      e ->
+        Logger.debug("`CreateTrendings` task exited with error")
+        Logger.debug(e.description)
+    end
   end
 end
