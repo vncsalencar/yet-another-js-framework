@@ -32,3 +32,5 @@ yajsf_backend-*.tar
 npm-debug.log
 /assets/node_modules/
 
+**/dev.secret.exs
+**/test.secret.exs
