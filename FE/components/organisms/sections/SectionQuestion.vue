@@ -48,7 +48,14 @@ sayHi();</code></pre>
         </p>
       </Details>
 
-      <Details title="Progress" ref="progress" v-show="answered">
+      <Progress
+        :answered-questions="answeredQuestions"
+        :answered="answered"
+        :correct-answer="correctAnswer"
+        ref="progress"
+      ></Progress>
+
+      <!-- <Details title="Progress" ref="progress" v-show="answered">
         <ul class="flex gap-8 justify-around mt-4">
           <li class="flex flex-col items-center">
             <b class="text-2xl align-middle">{{
@@ -85,7 +92,7 @@ sayHi();</code></pre>
         <div class="flex justify-center mt-4">
           <Countdown :count-down-date="countdownDate"></Countdown>
         </div>
-      </Details>
+      </Details> -->
     </div>
   </Section>
 </template>
@@ -95,16 +102,9 @@ const answered = ref(false);
 const correctAnswer = ref(false);
 const selectedAnswer = ref(0);
 
+const progress = ref();
+
 const answeredQuestions = ref([]);
-const progressData = ref({
-  questionsAnswered: 0,
-  correctPercentage: 0,
-  currentStreak: 0,
-  maxStreak: 0,
-});
-
-const countdownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
 const questionId = "2";
 const answers = [
   { id: 1, text: "Lydia and undefined", correct: false },
@@ -115,7 +115,6 @@ const answers = [
 
 onMounted(() => {
   checkQuestionPrevAnswered();
-  getProgress();
 });
 
 const checkAnswer = (correct: boolean, selected: number) => {
@@ -129,7 +128,7 @@ const checkAnswer = (correct: boolean, selected: number) => {
   localStorage.setItem("questions", JSON.stringify(answeredQuestions.value));
   answered.value = true;
 
-  updateProgress();
+  progress.value.updateProgress();
 };
 
 const checkQuestionPrevAnswered = () => {
@@ -146,36 +145,6 @@ const checkQuestionPrevAnswered = () => {
   }
 
   localStorage.setItem("questions", JSON.stringify([]));
-};
-
-const getProgress = () => {
-  let localStorageProgress = localStorage.getItem("progress");
-  if (localStorageProgress) {
-    progressData.value = JSON.parse(localStorageProgress);
-    return;
-  }
-  localStorage.setItem("progress", JSON.stringify(progressData.value));
-};
-
-const updateProgress = () => {
-  let correctAnswers = answeredQuestions.value.filter(
-    (answer) => answer.correct
-  ).length;
-
-  progressData.value.questionsAnswered = ++progressData.value.questionsAnswered;
-  progressData.value.correctPercentage =
-    (correctAnswers / progressData.value.questionsAnswered) * 100;
-
-  progressData.value.currentStreak = correctAnswer.value
-    ? ++progressData.value.currentStreak
-    : 0;
-
-  progressData.value.maxStreak =
-    progressData.value.currentStreak > progressData.value.maxStreak
-      ? progressData.value.currentStreak
-      : progressData.value.maxStreak;
-
-  localStorage.setItem("progress", JSON.stringify(progressData.value));
 };
 </script>
 
