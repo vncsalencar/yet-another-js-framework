@@ -1,44 +1,52 @@
 <template>
-  <div class="flex flex-col justify-center items-end gap-4 mt-4">
-    <ul class="flex justify-end gap-2">
-      <li>
-        <BtnPage
-          first
-          @page-change="changePage"
-          v-show="activePage > 1"
-        ></BtnPage>
-      </li>
-      <li>
-        <BtnPage
-          previous
-          @page-change="changePage"
-          v-show="activePage > 1"
-        ></BtnPage>
-      </li>
-      <li>
-        <BtnPage
-          v-for="i of range"
-          :page-number="i"
-          @page-change="changePage"
-          :active="i == activePage"
-        ></BtnPage>
-      </li>
-      <li>
-        <BtnPage
-          next
-          @page-change="changePage"
-          v-show="activePage < pageCount"
-        ></BtnPage>
-      </li>
-      <li>
-        <BtnPage
-          last
-          @page-change="changePage"
-          v-show="activePage < pageCount"
-        ></BtnPage>
-      </li>
-    </ul>
-    <p>{{ pageCount }} pages</p>
+  <div>
+    <div class="hidden md:flex flex-col justify-center items-end gap-4 mt-4">
+      <ul class="flex gap-2">
+        <li>
+          <BtnPage
+            first
+            @page-change="changePage"
+            v-show="activePage > 1"
+          ></BtnPage>
+        </li>
+        <li>
+          <BtnPage
+            previous
+            @page-change="changePage"
+            v-show="activePage > 1"
+          ></BtnPage>
+        </li>
+        <li>
+          <BtnPage
+            v-for="i of range"
+            :page-number="i"
+            @page-change="changePage"
+            :active="i == activePage"
+          ></BtnPage>
+        </li>
+        <li>
+          <BtnPage
+            next
+            @page-change="changePage"
+            v-show="activePage < pageCount"
+          ></BtnPage>
+        </li>
+        <li>
+          <BtnPage
+            last
+            @page-change="changePage"
+            v-show="activePage < pageCount"
+          ></BtnPage>
+        </li>
+      </ul>
+      <p>{{ pageCount }} pages</p>
+    </div>
+
+    <div v-show="activePage < pageCount" class="block md:hidden">
+      <button @click="loadMore" class="btn-primary w-full mt-4">
+        Load More Results
+      </button>
+    </div>
   </div>
 </template>
 
@@ -48,7 +56,10 @@ const props = defineProps<{
   pageCount: number;
   maxPages: number;
 }>();
-const emit = defineEmits<{ (e: "pageChange", activePage: number): void }>();
+const emit = defineEmits<{
+  (e: "pageChange", activePage: number): void;
+  (e: "loadMore", activePage: number): void;
+}>();
 const activePage = ref(props.activePage);
 
 const range = computed(() => {
@@ -89,5 +100,9 @@ const changePage = (payload: ChangePagePayload) => {
   if (payload.pageClicked) activePage.value = payload.pageClicked;
 
   emit("pageChange", activePage.value);
+};
+
+const loadMore = () => {
+  emit("loadMore", ++activePage.value);
 };
 </script>

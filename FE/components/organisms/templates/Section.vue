@@ -1,6 +1,6 @@
 <template>
   <section
-    class="px-4 py-24 md:py-40s"
+    class="px-4 py-12 md:py-40s"
     :class="{ 'bg-secondary': bgSecondary }"
   >
     <div class="max-w-[1200px] mx-auto">

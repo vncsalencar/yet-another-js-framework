@@ -20,8 +20,7 @@
         <small>forks: {{ formatCompactNumber(githubTrending.forks) }}</small>
         <span class="inline-block h-2 w-2 bg-white rounded-md"></span>
         <small
-          >⭐ {{ formatCompactNumber(githubTrending.starsToday) }} stars
-          today</small
+          >⭐{{ formatCompactNumber(githubTrending.starsToday) }} today</small
         >
       </div>
     </a>

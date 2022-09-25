@@ -59,7 +59,7 @@ const calculateScrollProgressOnResize = () => {
 };
 
 const scrollTo = (sectionId: SectionIdEnum) => {
-  const position = document.getElementById(sectionId).offsetTop - 32;
+  const position = document.getElementById(sectionId).offsetTop - 72;
   window.scrollTo({ top: position, behavior: "smooth" });
 };
 </script>

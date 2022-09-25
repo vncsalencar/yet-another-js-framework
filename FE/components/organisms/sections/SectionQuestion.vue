@@ -30,12 +30,7 @@ sayHi();</code></pre>
         ></BtnAnswer>
       </div>
 
-      <details
-        ref="explanation"
-        v-show="questionAnswered"
-        class="group bg-primary p-4"
-      >
-        <summary class="group-hover-text-accent">Explanation</summary>
+      <Details title="Explanation" ref="explanation" v-show="questionAnswered">
         <p>
           Within the function, we first declare the name variable with the var
           keyword. This means that the variable gets hoisted (memory space is
@@ -49,44 +44,40 @@ sayHi();</code></pre>
           try to access the variables before they are declared, JavaScript
           throws a ReferenceError.
         </p>
-      </details>
+      </Details>
 
-      <!-- <details
-        ref="progress"
-        v-show="questionAnswered"
-        class="group bg-primary p-4"
-      >
-        <summary class="group-hover-text-accent">Progress</summary>
-        <div>
-          <ul class="flex gap-8 justify-between mt-4">
-            <li class="flex flex-col items-center">
-              <b class="text-2xl align-middle">1</b>
-              <p class="text-center">Played</p>
-            </li>
+      <Details title="Progress" ref="progress" v-show="questionAnswered">
+        <ul class="flex gap-8 justify-around mt-4">
+          <li class="flex flex-col items-center">
+            <b class="text-2xl align-middle">1</b>
+            <p class="text-center">Questions <br />answered</p>
+          </li>
 
-            <li class="flex flex-col items-center">
-              <b class="text-2xl align-middle">100</b>
-              <p class="text-center">Correct %</p>
-            </li>
+          <li class="flex flex-col items-center">
+            <b class="text-2xl align-middle">100</b>
+            <p class="text-center">Correct %</p>
+          </li>
 
-            <li class="flex flex-col items-center">
-              <b class="text-2xl align-middle">3</b>
-              <p class="text-center">
-                Current <br />
-                streak
-              </p>
-            </li>
+          <li class="flex flex-col items-center">
+            <b class="text-2xl align-middle">3</b>
+            <p class="text-center">
+              Current <br />
+              streak
+            </p>
+          </li>
 
-            <li class="flex flex-col items-center">
-              <b class="text-2xl align-middle">5</b>
-              <p class="text-center">
-                Max <br />
-                streak
-              </p>
-            </li>
-          </ul>
+          <li class="flex flex-col items-center">
+            <b class="text-2xl align-middle">5</b>
+            <p class="text-center">
+              Max <br />
+              streak
+            </p>
+          </li>
+        </ul>
+        <div class="flex justify-center mt-4">
+          <Countdown :count-down-date="countdownDate"></Countdown>
         </div>
-      </details> -->
+      </Details>
     </div>
   </Section>
 </template>
@@ -95,6 +86,7 @@ sayHi();</code></pre>
 const questionAnswered = ref(false);
 const answeredQuestions = ref([]);
 const explanation = ref(null);
+const countdownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
 const questionId = "1";
 const answers = [
