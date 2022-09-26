@@ -1,39 +1,38 @@
 <template>
   <Details title="Progress" ref="progress" v-show="answered">
-    <ul class="flex flex-col md:flex-row gap-8 justify-between mt-4">
+    <ul class="flex flex-col md:flex-row gap-8 justify-evenly mt-4">
       <li class="flex flex-col items-center">
-        <b class="text-2xl align-middle">{{
+        <b class="text-2xl text-accent align-middle">{{
           progressData.questionsAnswered
         }}</b>
-        <p class="text-center">Questions <br />answered</p>
+        <p class="text-center">Questions Answered</p>
       </li>
 
       <li class="flex flex-col items-center">
-        <b class="text-2xl align-middle"
+        <b class="text-2xl text-accent align-middle"
           >{{ Number(progressData.correctPercentage).toFixed(2) }}%</b
         >
-        <p class="text-center">Correct</p>
+        <p class="text-center">Answered Correctly</p>
       </li>
 
       <li class="flex flex-col items-center">
-        <b class="text-2xl align-middle">{{ progressData.currentStreak }}</b>
-        <p class="text-center">
-          Current <br />
-          streak
-        </p>
+        <b class="text-2xl text-accent align-middle">{{
+          progressData.currentStreak
+        }}</b>
+        <p class="text-center">Current Streak</p>
       </li>
 
       <li class="flex flex-col items-center">
-        <b class="text-2xl align-middle">{{ progressData.maxStreak }}</b>
-        <p class="text-center">
-          Max <br />
-          streak
-        </p>
+        <b class="text-2xl text-accent align-middle">{{
+          progressData.maxStreak
+        }}</b>
+        <p class="text-center">Max Streak</p>
+      </li>
+
+      <li class="flex justify-center">
+        <Countdown :count-down-date="countdownDate"></Countdown>
       </li>
     </ul>
-    <div class="flex justify-center mt-4">
-      <Countdown :count-down-date="countdownDate"></Countdown>
-    </div>
   </Details>
 </template>
 
