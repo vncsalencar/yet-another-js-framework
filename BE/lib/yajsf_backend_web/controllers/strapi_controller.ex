@@ -56,7 +56,7 @@ defmodule YajsfBackendWeb.StrapiController do
     sort = Map.get(params, "sort", "createdAt:desc")
     append_url = "&sort[1]=#{sort}" <> "&sort[0]=starsToday:desc"
 
-    case request_strapi_content("trending", params, append_url) do
+    case request_strapi_content("github-trendings", params, append_url) do
       {:ok, %{"status_code" => status_code, "body" => body}} ->
         conn |> put_status(status_code) |> json(body)
 
