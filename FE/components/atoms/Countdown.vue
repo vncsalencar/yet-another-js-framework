@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-2xl font-bold text-accent">{{ countdown }}</p>
+    <p class="text-2xl text-center font-bold text-accent">{{ countdown }}</p>
     <p>Until Next Question</p>
   </div>
 </template>

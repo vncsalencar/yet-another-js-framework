@@ -43,6 +43,18 @@ declare global {
         }[],
     }
 
+    interface Question {
+        id: number,
+        text: string,
+        explanation: string,
+        snippet: string,
+        alternatives: {
+            alternative: string,
+            correct: boolean,
+            text: string,
+        }[]
+    }
+
     interface AnsweredQuestion {
         id: string,
         correct: boolean

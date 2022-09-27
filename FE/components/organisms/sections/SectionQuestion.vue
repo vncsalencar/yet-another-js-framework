@@ -5,46 +5,33 @@
     </template>
     <div class="flex flex-col gap-6">
       <div>
-        <pre v-highlightjs><code class="javascript">function sayHi() {
-  console.log(name);
-  console.log(age);
-  var name = 'Lydia';
-  let age = 21;
-}
-sayHi();</code></pre>
+        <pre
+          v-highlightjs
+        ><code class="javascript">{{question.snippet}}</code></pre>
       </div>
 
-      <h3>What's the output?</h3>
+      <h3>{{ question.text }}</h3>
 
-      <div class="flex flex-col gap-4">
-        <BtnAnswer
-          @answer-selected="checkAnswer"
-          v-for="answer of answers"
-          :text="answer.text"
-          :correct="answer.correct"
-          :id="answer.id"
-          :answered="answered"
-          :selected="selectedAnswer"
-          :class="{
-            'border-green': answered && answer.correct,
-            'border-red': answered && !answer.correct,
-          }"
-        ></BtnAnswer>
-      </div>
+      <ul class="flex flex-col gap-4">
+        <li v-for="answer of question.alternatives">
+          <BtnAnswer
+            @answer-selected="checkAnswer"
+            :text="answer.text"
+            :correct="answer.correct"
+            :alternative="answer.alternative"
+            :answered="answered"
+            :selected="selectedAnswer"
+            :class="{
+              'border-green': answered && answer.correct,
+              'border-red': answered && !answer.correct,
+            }"
+          ></BtnAnswer>
+        </li>
+      </ul>
 
       <Details title="Explanation" ref="explanation" v-show="answered">
         <p>
-          Within the function, we first declare the name variable with the var
-          keyword. This means that the variable gets hoisted (memory space is
-          set up during the creation phase) with the default value of undefined,
-          until we actually get to the line where we define the variable. We
-          haven't defined the variable yet on the line where we try to log the
-          name variable, so it still holds the value of undefined. Variables
-          with the let keyword (and const) are hoisted, but unlike var, don't
-          get initialized. They are not accessible before the line we declare
-          (initialize) them. This is called the "temporal dead zone". When we
-          try to access the variables before they are declared, JavaScript
-          throws a ReferenceError.
+          {{ question.explanation }}
         </p>
       </Details>
 
@@ -59,30 +46,30 @@ sayHi();</code></pre>
 </template>
 
 <script setup lang="ts">
+import { ApiRouteEnum } from "~~/types/enums";
+
 const answered = ref(false);
 const correctAnswer = ref(false);
-const selectedAnswer = ref(0);
+const selectedAnswer = ref("");
 
 const progress = ref();
 
 const answeredQuestions = ref([]);
-const questionId = "112133133";
-const answers = [
-  { id: 1, text: "Lydia and undefined", correct: false },
-  { id: 2, text: "Lydia and ReferenceError", correct: false },
-  { id: 3, text: "ReferenceError and 21", correct: false },
-  { id: 4, text: "undefined and ReferenceError", correct: true },
-];
+
+const config = useRuntimeConfig();
+const API_URL = `${config.CMS}/${ApiRouteEnum.Question}`;
+
+const { data: question } = await useFetch<Question>(API_URL);
 
 onMounted(() => {
   checkQuestionPrevAnswered();
 });
 
-const checkAnswer = (correct: boolean, selected: number) => {
+const checkAnswer = (correct: boolean, selected: string) => {
   correctAnswer.value = correct;
   selectedAnswer.value = selected;
   answeredQuestions.value.push({
-    id: questionId,
+    id: question.value.id,
     correct: correct,
     selected: selected,
   });
@@ -93,10 +80,13 @@ const checkAnswer = (correct: boolean, selected: number) => {
 };
 
 const checkQuestionPrevAnswered = () => {
+  console.log(question);
   let localStorageQuestions = localStorage.getItem("questions");
   if (localStorageQuestions) {
     answeredQuestions.value = JSON.parse(localStorageQuestions);
-    let answerFound = answeredQuestions.value.find((q) => q.id == questionId);
+    let answerFound = answeredQuestions.value.find(
+      (q) => q.id == question.value.id
+    );
 
     if (answerFound) {
       answered.value = true;
