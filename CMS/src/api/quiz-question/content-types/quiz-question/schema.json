@@ -15,16 +15,20 @@
     "text": {
       "type": "text"
     },
-    "codeSnippet": {
+    "snippet": {
       "type": "text"
     },
     "explanation": {
       "type": "text"
     },
-    "answers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::quiz-answer.quiz-answer"
+    "alternatives": {
+      "type": "json"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": [
+        "JavaScript"
+      ]
     }
   }
 }

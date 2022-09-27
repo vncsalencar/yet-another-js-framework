@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "daily_quizzes",
+  "info": {
+    "singularName": "daily-quiz",
+    "pluralName": "daily-quizzes",
+    "displayName": "DailyQuiz"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "javascript": {
+      "type": "string"
+    }
+  }
+}
