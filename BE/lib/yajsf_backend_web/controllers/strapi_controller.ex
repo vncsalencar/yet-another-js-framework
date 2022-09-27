@@ -5,12 +5,6 @@ defmodule YajsfBackendWeb.StrapiController do
   alias YajsfBackendWeb.Schemas.{ContentWeLiked, HelpfulMaterial, GitHubTrending}
   alias YajsfBackend.{Env}
 
-  @strapi_paths %{
-    "liked" => "contents-we-liked",
-    "helpful" => "helpful-materials",
-    "trending" => "github-trendings"
-  }
-
   tags ["users"]
 
   operation :liked,
@@ -23,7 +17,7 @@ defmodule YajsfBackendWeb.StrapiController do
     sort = Map.get(params, "sort", "createdAt:desc")
     append_url = "&sort=#{sort}"
 
-    case request_strapi_content("liked", params, append_url) do
+    case request_strapi_content("contents-we-liked", params, append_url) do
       {:ok, %{"status_code" => status_code, "body" => body}} ->
         conn |> put_status(status_code) |> json(body)
 
@@ -41,7 +35,7 @@ defmodule YajsfBackendWeb.StrapiController do
     ]
 
   def helpful(conn, params) do
-    case request_strapi_content("helpful", params) do
+    case request_strapi_content("helpful-materials", params) do
       {:ok, %{"status_code" => status_code, "body" => body}} ->
         conn |> put_status(status_code) |> json(body)
 
@@ -73,9 +67,38 @@ defmodule YajsfBackendWeb.StrapiController do
     end
   end
 
+  def daily_quiz(conn, params) do
+    language = Map.get(params, "language", "javascript")
+
+    {:ok, %{"attributes" => attributes}} = get_single_content("daily-quiz")
+    id = Map.get(attributes, language)
+
+    {:ok, data} = get_content_by_id("quiz-questions", id)
+    conn |> put_status(200) |> json(strip(data))
+  end
+
+  def get_single_content(content_type) do
+    request_url = "#{Env.env(:strapi_url)}/api/#{content_type}"
+
+    %HTTPoison.Response{body: body} =
+      HTTPoison.get!(request_url, %{"Authorization" => "Bearer #{Env.env(:strapi_token)}"})
+
+    %{"data" => data} = Jason.decode!(body)
+    {:ok, data}
+  end
+
+  def get_content_by_id(content_type, id) do
+    request_url = "#{Env.env(:strapi_url)}/api/#{content_type}/#{id}"
+
+    %HTTPoison.Response{body: body} =
+      HTTPoison.get!(request_url, %{"Authorization" => "Bearer #{Env.env(:strapi_token)}"})
+
+    %{"data" => data} = Jason.decode!(body)
+    {:ok, data}
+  end
+
   def create_trendings(trendings) do
-    api_path = Map.get(@strapi_paths, "trending")
-    request_url = "#{Env.env(:strapi_url)}/api/#{api_path}"
+    request_url = "#{Env.env(:strapi_url)}/api/github-trendings"
 
     Enum.each(trendings, fn trending ->
       body = Jason.encode!(%{"data" => trending})
@@ -97,8 +120,7 @@ defmodule YajsfBackendWeb.StrapiController do
   end
 
   def delete_trendings(trendings) do
-    api_path = Map.get(@strapi_paths, "trending")
-    url = "#{Env.env(:strapi_url)}/api/#{api_path}"
+    url = "#{Env.env(:strapi_url)}/api/github-trendings"
 
     Enum.each(trendings, fn trending ->
       request_url = "#{url}/#{trending["id"]}"
@@ -107,18 +129,14 @@ defmodule YajsfBackendWeb.StrapiController do
              "Authorization" => "Bearer #{Env.env(:strapi_token)}",
              "Content-type" => "application/json"
            }) do
-        {:ok, %HTTPoison.Response{status_code: 200} = response} ->
-          IO.inspect(response)
+        {:ok, %HTTPoison.Response{status_code: 200} = _response} ->
           Logger.debug("GitHubTrending with id:`#{trending["id"]}` deleted succesfully")
 
-        {:ok, response} ->
-          IO.inspect(response)
-
+        {:ok, _response} ->
           Logger.debug("Could not delete GitHubTrending with id `#{trending["id"]}`")
 
-        {:error, reason} ->
+        {:error, _reason} ->
           Logger.debug("Could not delete GitHubTrending iwth id `#{trending["id"]}`")
-          IO.inspect(reason)
       end
     end)
   end
@@ -146,10 +164,8 @@ defmodule YajsfBackendWeb.StrapiController do
   end
 
   def get_all_content(content_type, page \\ 0, content \\ []) do
-    api_path = Map.get(@strapi_paths, content_type)
-
     request_url =
-      "#{Env.env(:strapi_url)}/api/#{api_path}" <>
+      "#{Env.env(:strapi_url)}/api/#{content_type}" <>
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=100"
 
@@ -170,10 +186,8 @@ defmodule YajsfBackendWeb.StrapiController do
     page_size = Map.get(params, "page_size", 3)
     page = Map.get(params, "page", 0)
 
-    api_path = Map.get(@strapi_paths, content_type)
-
     request_url =
-      "#{Env.env(:strapi_url)}/api/#{api_path}" <>
+      "#{Env.env(:strapi_url)}/api/#{content_type}" <>
         "?pagination[page]=#{page}" <>
         "&pagination[pageSize]=#{page_size}" <>
         append_url <>

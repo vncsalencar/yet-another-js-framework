@@ -41,6 +41,7 @@ defmodule YajsfBackendWeb.Router do
     get "/strapi/liked", StrapiController, :liked
     get "/strapi/helpful", StrapiController, :helpful
     get "/strapi/trending", StrapiController, :trending
+    get "/strapi/daily-quiz", StrapiController, :daily_quiz
   end
 
   pipeline :openapi do
